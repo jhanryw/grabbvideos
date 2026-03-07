@@ -120,6 +120,8 @@ function renderHead(page) {
   <meta name="twitter:description" content="${escAttr(page.description)}" />
   <meta name="twitter:image"       content="${escAttr(page.ogImage || SITE + '/og-image.png')}" />
   <script type="application/ld+json">${ldJson}</script>
+  <link rel="icon"             type="image/png" sizes="192x192" href="/grabbvideosfav.png" />
+  <link rel="apple-touch-icon"                                   href="/grabbvideosfav.png" />
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <link rel="preconnect" href="https://scripts.clarity.ms" />
   <link rel="preconnect" href="https://pl28866342.effectivegatecpm.com" crossorigin />
@@ -145,9 +147,10 @@ function renderHeader(page) {
   return `
 <header class="hero-gradient text-white">
   <div class="max-w-4xl mx-auto px-4 pt-6 pb-8 text-center">
-    <a href="/" class="inline-flex items-center gap-2 mb-3">
-      <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="9" fill="white" fill-opacity=".12"/><path d="M12 28V16l8-6 8 6v12H24v-7h-8v7H12Z" fill="white"/></svg>
-      <span class="text-lg font-extrabold tracking-tight">GrabbVideos</span>
+    <a href="/" class="inline-flex justify-center mb-3">
+      <img src="/grabbvideos.png" alt="GrabbVideos" width="120" height="92"
+           class="h-20 sm:h-24 w-auto"
+           style="filter:drop-shadow(0 2px 8px rgba(0,0,0,.25))" />
     </a>
     ${showBanner ? `
     <div class="hidden md:flex justify-center my-3">
@@ -248,7 +251,9 @@ function renderFooter() {
   return `
 <footer style="background:#f3f4f6;border-top:1px solid #e5e5e3;" class="text-[#595959] py-8 px-4 mt-8">
   <div class="max-w-5xl mx-auto text-center space-y-3">
-    <p class="text-gray-900 font-bold tracking-tight">GrabbVideos</p>
+    <a href="/">
+      <img src="/grabbvideosfav.png" alt="GrabbVideos" width="48" height="48" class="h-12 w-12 mx-auto rounded-xl" />
+    </a>
     <p class="text-xs max-w-md mx-auto">Free tool to download Instagram and TikTok videos. Only download content you own or have permission to use.</p>
     <div class="flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-xs pt-1">
       <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
@@ -608,9 +613,10 @@ function renderI18nPage(page) {
 <body class="font-sans antialiased min-h-screen">
 <header class="hero-gradient text-white">
   <div class="max-w-4xl mx-auto px-4 pt-8 pb-10 text-center">
-    <a href="/" class="inline-flex items-center gap-2 mb-4">
-      <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="9" fill="white" fill-opacity=".12"/><path d="M12 28V16l8-6 8 6v12H24v-7h-8v7H12Z" fill="white"/></svg>
-      <span class="text-xl font-extrabold tracking-tight">GrabbVideos</span>
+    <a href="/" class="inline-flex justify-center mb-4">
+      <img src="/grabbvideos.png" alt="GrabbVideos" width="156" height="120"
+           class="h-28 w-auto sm:h-32"
+           style="filter:drop-shadow(0 2px 8px rgba(0,0,0,.25))" />
     </a>
     <div class="hidden md:flex justify-center my-4">
       <div>

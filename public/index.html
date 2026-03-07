@@ -26,6 +26,10 @@
   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"GrabbVideos","url":"https://grabbvideos.com","description":"Free online tool to download Instagram Reels, Stories and TikTok videos without watermark in MP4 format.","applicationCategory":"UtilitiesApplication","operatingSystem":"All","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","ratingCount":"5820"}}
   </script>
 
+  <!-- ══ Favicon ══════════════════════════════════════════════════════════ -->
+  <link rel="icon"             type="image/png" sizes="192x192" href="/grabbvideosfav.png" />
+  <link rel="apple-touch-icon"                                   href="/grabbvideosfav.png" />
+
   <!-- ══ Preconnect hints (eliminates DNS round-trips for critical origins) ═ -->
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <link rel="preconnect" href="https://scripts.clarity.ms" />
@@ -210,12 +214,15 @@
   <div class="max-w-4xl mx-auto px-4 pt-8 pb-10 text-center">
 
     <!-- Logo -->
-    <a href="/" class="inline-flex items-center gap-2 mb-4">
-      <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="9" fill="white" fill-opacity=".12"/>
-        <path d="M12 28V16l8-6 8 6v12H24v-7h-8v7H12Z" fill="white"/>
-      </svg>
-      <span class="text-xl font-extrabold tracking-tight">GrabbVideos</span>
+    <a href="/" class="inline-flex justify-center mb-4">
+      <img
+        src="/grabbvideos.png"
+        alt="GrabbVideos"
+        width="156"
+        height="120"
+        class="h-28 w-auto sm:h-32"
+        style="filter:drop-shadow(0 2px 8px rgba(0,0,0,.25))"
+      />
     </a>
 
     <!-- ══ BANNER 728×90 — Desktop leaderboard (below logo, above H1) ════
@@ -591,7 +598,9 @@
 ══════════════════════════════════════════════════════════════════════════ -->
 <footer style="background:#f3f4f6; border-top:1px solid #e5e5e3;" class="text-[#595959] py-8 px-4">
   <div class="max-w-4xl mx-auto text-center space-y-3">
-    <p class="text-gray-900 font-bold tracking-tight">GrabbVideos</p>
+    <a href="/">
+      <img src="/grabbvideosfav.png" alt="GrabbVideos" width="48" height="48" class="h-12 w-12 mx-auto rounded-xl" />
+    </a>
     <p class="text-xs max-w-md mx-auto">
       Free tool to download Instagram and TikTok videos. Only download content you own or have permission to use.
     </p>

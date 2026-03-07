@@ -5,6 +5,8 @@ const cors        = require('cors');
 const path        = require('path');
 const compression = require('compression');
 const { spawn }   = require('child_process');
+const pages       = require('./src/pages');
+const { renderPage, renderBlogIndex } = require('./src/templates');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -192,6 +194,34 @@ app.get('/api/download', (req, res) => {
   req.on('close', () => {
     if (!proc.killed) proc.kill('SIGKILL');
   });
+});
+
+/* ── Tool pages ─────────────────────────────────────────────────────────── */
+Object.entries(pages.tools).forEach(([slug, page]) => {
+  app.get(`/${slug}`, (_req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.send(renderPage(page));
+  });
+});
+
+/* ── Blog index ──────────────────────────────────────────────────────────── */
+app.get('/blog', (_req, res) => {
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  res.send(renderBlogIndex(pages.blogs));
+});
+
+/* ── Blog posts ──────────────────────────────────────────────────────────── */
+Object.entries(pages.blogs).forEach(([slug, page]) => {
+  app.get(`/blog/${slug}`, (_req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.send(renderPage(page));
+  });
+});
+
+/* ── i18n home pages ─────────────────────────────────────────────────────── */
+Object.entries(pages.i18n).forEach(([lang, page]) => {
+  app.get(`/${lang}`,  (_req, res) => res.send(renderPage(page)));
+  app.get(`/${lang}/`, (_req, res) => res.send(renderPage(page)));
 });
 
 /* ── SPA fallback ───────────────────────────────────────────────────────── */

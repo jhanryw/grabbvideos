@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- ── Home ──────────────────────────────────────────────────── -->
   <url>
     <loc>https://grabbvideos.com/</loc>
     <lastmod>2026-03-07</lastmod>
@@ -8,17 +10,103 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- ── Tool pages (priority 0.9 / 0.8) ──────────────────────── -->
+  <url>
+    <loc>https://grabbvideos.com/reels-downloader</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://grabbvideos.com/story-saver</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://grabbvideos.com/photo-downloader</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://grabbvideos.com/video-downloader</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ── i18n home pages ───────────────────────────────────────── -->
+  <url>
+    <loc>https://grabbvideos.com/pt</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://grabbvideos.com/pt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grabbvideos.com/"/>
+  </url>
+  <url>
+    <loc>https://grabbvideos.com/es</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://grabbvideos.com/es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grabbvideos.com/"/>
+  </url>
+  <url>
+    <loc>https://grabbvideos.com/de</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://grabbvideos.com/de"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://grabbvideos.com/"/>
+  </url>
+
+  <!-- ── Blog index ────────────────────────────────────────────── -->
+  <url>
+    <loc>https://grabbvideos.com/blog</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ── Blog posts (priority 0.6) ─────────────────────────────── -->
+  <url>
+    <loc>https://grabbvideos.com/blog/how-to-download-instagram-reels-android-iphone</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grabbvideos.com/blog/how-to-view-instagram-stories-anonymously</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grabbvideos.com/blog/best-instagram-video-downloader-pc-2026</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grabbvideos.com/blog/how-to-download-private-instagram-videos</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ── Static / legal pages ──────────────────────────────────── -->
   <url>
     <loc>https://grabbvideos.com/privacy.html</loc>
     <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-
   <url>
     <loc>https://grabbvideos.com/terms.html</loc>
     <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 

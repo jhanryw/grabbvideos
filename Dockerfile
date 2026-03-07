@@ -22,7 +22,8 @@ RUN apt-get update && \
         ffmpeg \
         curl \
         ca-certificates && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    ln -s /usr/bin/python3 /usr/bin/python
 
 # ── Install yt-dlp official binary ──────────────────────────────────────────
 #   Always fetches the LATEST stable release from GitHub Releases.

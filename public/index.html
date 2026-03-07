@@ -62,17 +62,17 @@
   <style>
     /* ── Palette ────────────────────────────────────────────────── */
     :root {
-      --bg:      #171716;
-      --surf:    #1e1e1c;
-      --surf2:   #252523;
-      --border:  #2e2e2b;
+      --bg:      #ffffff;
+      --surf:    #f9f9f9;
+      --surf2:   #f3f3f3;
+      --border:  #e5e5e3;
       --accent:  #7c3aed;
     }
 
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
-      color: #e5e5e3;
+      color: #1a1a1a;
       /* bottom padding on mobile so sticky bar doesn't cover content */
       padding-bottom: 60px;
     }
@@ -94,11 +94,11 @@
     #urlInput {
       background: var(--surf2);
       border: 1.5px solid var(--border);
-      color: #e5e5e3;
+      color: #1a1a1a;
       border-radius: .75rem;
       transition: border-color .2s, box-shadow .2s;
     }
-    #urlInput::placeholder { color: #707070; }
+    #urlInput::placeholder { color: #767676; }
     #urlInput:focus {
       outline: none;
       border-color: var(--accent);
@@ -125,7 +125,7 @@
       font-size: .58rem;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: #909090;
+      color: #595959;
       text-align: center;
       margin-bottom: .3rem;
     }
@@ -150,7 +150,7 @@
       font-size: .65rem;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: #909090;
+      color: #595959;
       display: flex;
       align-items: center;
       gap: .5rem;
@@ -177,8 +177,8 @@
     .faq-item:last-child { border-bottom: none; }
 
     /* ── States ─────────────────────────────────────────────────── */
-    .result-bg { background: #0f2a1a; border: 1px solid #1a4a2a; }
-    .error-bg  { background: #2a0f0f; border: 1px solid #4a1a1a; }
+    .result-bg { background: #ecfdf5; border: 1px solid #bbf7d0; }
+    .error-bg  { background: #fef2f2; border: 1px solid #fecaca; }
 
     /* ── Sticky mobile anchor ───────────────────────────────────── */
     #sticky-anchor {
@@ -188,7 +188,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #111110;
+      background: #f9f9f9;
       border-top: 1px solid var(--border);
       height: 60px;
       padding: 5px 0;
@@ -218,7 +218,7 @@
          highperformanceformat.com — key bdaf2212...                       -->
     <div class="hidden md:flex justify-center my-4">
       <div>
-        <div class="ad-label">Advertisement</div>
+        <div class="ad-label" style="color:#c4b5fd">Advertisement</div>
         <script>
           atOptions = {
             'key'    : 'bdaf2212efd1c570eb92747dc8a4ae59',
@@ -265,10 +265,10 @@
   <!-- ─── TOOL CARD ──────────────────────────────────────────────────── -->
   <section class="card p-5 sm:p-8">
 
-    <h2 class="text-xl font-bold text-white text-center mb-1">
+    <h2 class="text-xl font-bold text-gray-900 text-center mb-1">
       Paste your video link below
     </h2>
-    <p class="text-[#909090] text-center text-xs mb-6">
+    <p class="text-[#6b7280] text-center text-xs mb-6">
       Instagram Reels · Stories · Posts &nbsp;·&nbsp; TikTok Videos
     </p>
 
@@ -312,26 +312,33 @@
       <!-- Spinner + countdown -->
       <div class="flex flex-col items-center gap-3 mb-5">
         <div class="relative w-14 h-14">
-          <div class="spinner absolute inset-0 rounded-full border-[3px] border-violet-900 border-t-violet-400"></div>
+          <div class="spinner absolute inset-0 rounded-full border-[3px] border-violet-200 border-t-violet-600"></div>
           <div class="absolute inset-0 flex items-center justify-center">
-            <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/>
             </svg>
           </div>
         </div>
         <div class="text-center">
-          <p class="text-white font-semibold">Grabbing your video…</p>
-          <p class="text-[#909090] text-xs mt-0.5" id="countdownText">Please wait</p>
+          <p class="text-gray-900 font-semibold">Grabbing your video…</p>
+          <p class="text-[#6b7280] text-xs mt-0.5" id="countdownText">Please wait</p>
         </div>
       </div>
 
-      <!-- Loading-specific ad — directly below progress bar ★ highest CTR -->
+      <!-- Loading-specific ad — desktop 728×90 / mobile 320×50 -->
       <div class="loading-ad-box">
-        <p class="text-center text-[10px] text-[#909090] uppercase tracking-widest mb-2" aria-hidden="true">
+        <p class="text-center text-[10px] text-[#595959] uppercase tracking-widest mb-2" aria-hidden="true">
           Sponsored — While you wait
         </p>
         <div class="banner-wrap">
-          <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2-loading"></div>
+          <div class="hidden md:block">
+            <script>atOptions={'key':'bdaf2212efd1c570eb92747dc8a4ae59','format':'iframe','height':90,'width':728,'params':{}};</script>
+            <script src="https://www.highperformanceformat.com/bdaf2212efd1c570eb92747dc8a4ae59/invoke.js"></script>
+          </div>
+          <div class="block md:hidden">
+            <script>atOptions={'key':'3660345d7ec8fd060c0beee5d3e4928f','format':'iframe','height':50,'width':320,'params':{}};</script>
+            <script src="https://www.highperformanceformat.com/3660345d7ec8fd060c0beee5d3e4928f/invoke.js"></script>
+          </div>
         </div>
       </div>
 
@@ -350,9 +357,9 @@
           onerror="this.style.display='none'"
         />
         <div class="flex-1 text-center sm:text-left min-w-0">
-          <p class="text-xs text-emerald-400 font-semibold uppercase tracking-wide mb-1">✓ Video ready</p>
-          <p id="videoTitle" class="font-semibold text-white text-sm mb-1 line-clamp-2"></p>
-          <p id="videoDuration" class="text-xs text-[#909090] mb-3"></p>
+          <p class="text-xs text-emerald-600 font-semibold uppercase tracking-wide mb-1">✓ Video ready</p>
+          <p id="videoTitle" class="font-semibold text-gray-900 text-sm mb-1 line-clamp-2"></p>
+          <p id="videoDuration" class="text-xs text-[#6b7280] mb-3"></p>
           <a
             id="downloadLink"
             href="#"
@@ -371,12 +378,12 @@
     <!-- Error state -->
     <div id="errorState" class="hidden mt-6 fade-in">
       <div class="flex items-start gap-3 p-4 rounded-xl error-bg">
-        <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 8v4m0 4h.01"/>
         </svg>
         <div>
-          <p class="font-semibold text-red-300 text-sm mb-0.5">Could not grab this video</p>
-          <p id="errorMessage" class="text-red-400/80 text-xs"></p>
+          <p class="font-semibold text-red-700 text-sm mb-0.5">Could not grab this video</p>
+          <p id="errorMessage" class="text-red-500 text-xs"></p>
         </div>
       </div>
     </div>
@@ -385,56 +392,56 @@
 
   <!-- ─── FEATURES GRID ──────────────────────────────────────────────────── -->
   <section class="card p-5 sm:p-8">
-    <h2 class="text-lg font-bold text-white text-center mb-2">Why Choose GrabbVideos?</h2>
-    <p class="text-[#909090] text-xs text-center mb-6">The fastest, cleanest way to save social videos — no watermark, no hassle.</p>
+    <h2 class="text-lg font-bold text-gray-900 text-center mb-2">Why Choose GrabbVideos?</h2>
+    <p class="text-[#6b7280] text-xs text-center mb-6">The fastest, cleanest way to save social videos — no watermark, no hassle.</p>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
 
       <div class="flex flex-col items-center text-center gap-2 p-3 rounded-xl" style="background:var(--surf2)">
-        <div class="w-10 h-10 bg-violet-900/60 rounded-xl flex items-center justify-center border border-violet-800">
-          <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center border border-violet-200">
+          <svg class="w-5 h-5 text-violet-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
-        <p class="text-white font-semibold text-sm">Lightning Fast</p>
-        <p class="text-[#909090] text-xs">Video ready in seconds — no queue, no waiting.</p>
+        <p class="text-gray-900 font-semibold text-sm">Lightning Fast</p>
+        <p class="text-[#6b7280] text-xs">Video ready in seconds — no queue, no waiting.</p>
       </div>
 
       <div class="flex flex-col items-center text-center gap-2 p-3 rounded-xl" style="background:var(--surf2)">
-        <div class="w-10 h-10 bg-violet-900/60 rounded-xl flex items-center justify-center border border-violet-800">
-          <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center border border-violet-200">
+          <svg class="w-5 h-5 text-violet-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <p class="text-white font-semibold text-sm">No Watermark</p>
-        <p class="text-[#909090] text-xs">Clean MP4 without TikTok or Instagram branding.</p>
+        <p class="text-gray-900 font-semibold text-sm">No Watermark</p>
+        <p class="text-[#6b7280] text-xs">Clean MP4 without TikTok or Instagram branding.</p>
       </div>
 
       <div class="flex flex-col items-center text-center gap-2 p-3 rounded-xl" style="background:var(--surf2)">
-        <div class="w-10 h-10 bg-violet-900/60 rounded-xl flex items-center justify-center border border-violet-800">
-          <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        <div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center border border-violet-200">
+          <svg class="w-5 h-5 text-violet-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
         </div>
-        <p class="text-white font-semibold text-sm">No Sign-Up</p>
-        <p class="text-[#909090] text-xs">Zero accounts or forms — just paste and go.</p>
+        <p class="text-gray-900 font-semibold text-sm">No Sign-Up</p>
+        <p class="text-[#6b7280] text-xs">Zero accounts or forms — just paste and go.</p>
       </div>
 
       <div class="flex flex-col items-center text-center gap-2 p-3 rounded-xl" style="background:var(--surf2)">
-        <div class="w-10 h-10 bg-violet-900/60 rounded-xl flex items-center justify-center border border-violet-800">
-          <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        <div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center border border-violet-200">
+          <svg class="w-5 h-5 text-violet-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
         </div>
-        <p class="text-white font-semibold text-sm">Mobile-Friendly</p>
-        <p class="text-[#909090] text-xs">Works on iPhone, Android, and desktop browsers.</p>
+        <p class="text-gray-900 font-semibold text-sm">Mobile-Friendly</p>
+        <p class="text-[#6b7280] text-xs">Works on iPhone, Android, and desktop browsers.</p>
       </div>
 
       <div class="flex flex-col items-center text-center gap-2 p-3 rounded-xl" style="background:var(--surf2)">
-        <div class="w-10 h-10 bg-violet-900/60 rounded-xl flex items-center justify-center border border-violet-800">
-          <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.069A1 1 0 0121 8.87V15.13a1 1 0 01-1.447.9L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        <div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center border border-violet-200">
+          <svg class="w-5 h-5 text-violet-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.069A1 1 0 0121 8.87V15.13a1 1 0 01-1.447.9L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
         </div>
-        <p class="text-white font-semibold text-sm">HD Quality</p>
-        <p class="text-[#909090] text-xs">Best available resolution — up to 1080p MP4.</p>
+        <p class="text-gray-900 font-semibold text-sm">HD Quality</p>
+        <p class="text-[#6b7280] text-xs">Best available resolution — up to 1080p MP4.</p>
       </div>
 
       <div class="flex flex-col items-center text-center gap-2 p-3 rounded-xl" style="background:var(--surf2)">
-        <div class="w-10 h-10 bg-violet-900/60 rounded-xl flex items-center justify-center border border-violet-800">
-          <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center border border-violet-200">
+          <svg class="w-5 h-5 text-violet-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
         </div>
-        <p class="text-white font-semibold text-sm">100% Private</p>
-        <p class="text-[#909090] text-xs">We never store your links or downloaded content.</p>
+        <p class="text-gray-900 font-semibold text-sm">100% Private</p>
+        <p class="text-[#6b7280] text-xs">We never store your links or downloaded content.</p>
       </div>
 
     </div>
@@ -446,24 +453,24 @@
       <div class="ig-badge w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
         <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </div>
-      <h2 class="text-lg font-bold text-white">How to Download Instagram Reels &amp; Videos</h2>
+      <h2 class="text-lg font-bold text-gray-900">How to Download Instagram Reels &amp; Videos</h2>
     </div>
     <ol class="space-y-4">
       <li class="flex gap-3">
-        <span class="flex-shrink-0 w-7 h-7 bg-violet-900/60 text-violet-300 rounded-full flex items-center justify-center font-bold text-xs border border-violet-800">1</span>
-        <div><p class="font-semibold text-white text-sm">Open the video on Instagram</p><p class="text-[#909090] text-xs mt-0.5">Go to the Reel, Post, or Story — via the app or browser.</p></div>
+        <span class="flex-shrink-0 w-7 h-7 bg-violet-100 text-violet-700 rounded-full flex items-center justify-center font-bold text-xs border border-violet-200">1</span>
+        <div><p class="font-semibold text-gray-900 text-sm">Open the video on Instagram</p><p class="text-[#6b7280] text-xs mt-0.5">Go to the Reel, Post, or Story — via the app or browser.</p></div>
       </li>
       <li class="flex gap-3">
-        <span class="flex-shrink-0 w-7 h-7 bg-violet-900/60 text-violet-300 rounded-full flex items-center justify-center font-bold text-xs border border-violet-800">2</span>
-        <div><p class="font-semibold text-white text-sm">Copy the link</p><p class="text-[#909090] text-xs mt-0.5">Tap ··· → <em>Copy link</em>. On desktop, copy the URL from the address bar.</p></div>
+        <span class="flex-shrink-0 w-7 h-7 bg-violet-100 text-violet-700 rounded-full flex items-center justify-center font-bold text-xs border border-violet-200">2</span>
+        <div><p class="font-semibold text-gray-900 text-sm">Copy the link</p><p class="text-[#6b7280] text-xs mt-0.5">Tap ··· → <em>Copy link</em>. On desktop, copy the URL from the address bar.</p></div>
       </li>
       <li class="flex gap-3">
-        <span class="flex-shrink-0 w-7 h-7 bg-violet-900/60 text-violet-300 rounded-full flex items-center justify-center font-bold text-xs border border-violet-800">3</span>
-        <div><p class="font-semibold text-white text-sm">Paste &amp; click "Grab Video"</p><p class="text-[#909090] text-xs mt-0.5">Paste the link above and hit the button. Processing takes a few seconds.</p></div>
+        <span class="flex-shrink-0 w-7 h-7 bg-violet-100 text-violet-700 rounded-full flex items-center justify-center font-bold text-xs border border-violet-200">3</span>
+        <div><p class="font-semibold text-gray-900 text-sm">Paste &amp; click "Grab Video"</p><p class="text-[#6b7280] text-xs mt-0.5">Paste the link above and hit the button. Processing takes a few seconds.</p></div>
       </li>
       <li class="flex gap-3">
-        <span class="flex-shrink-0 w-7 h-7 bg-violet-900/60 text-violet-300 rounded-full flex items-center justify-center font-bold text-xs border border-violet-800">4</span>
-        <div><p class="font-semibold text-white text-sm">Click "Download MP4"</p><p class="text-[#909090] text-xs mt-0.5">The HD MP4 saves directly to your device — no watermark, no login needed.</p></div>
+        <span class="flex-shrink-0 w-7 h-7 bg-violet-100 text-violet-700 rounded-full flex items-center justify-center font-bold text-xs border border-violet-200">4</span>
+        <div><p class="font-semibold text-gray-900 text-sm">Click "Download MP4"</p><p class="text-[#6b7280] text-xs mt-0.5">The HD MP4 saves directly to your device — no watermark, no login needed.</p></div>
       </li>
     </ol>
   </section>
@@ -474,84 +481,102 @@
       <div class="tt-badge w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
         <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
       </div>
-      <h2 class="text-lg font-bold text-white">How to Download TikTok Videos Without Watermark</h2>
+      <h2 class="text-lg font-bold text-gray-900">How to Download TikTok Videos Without Watermark</h2>
     </div>
     <ol class="space-y-4">
       <li class="flex gap-3">
-        <span class="flex-shrink-0 w-7 h-7 bg-gray-800 text-gray-400 rounded-full flex items-center justify-center font-bold text-xs border border-gray-700">1</span>
-        <div><p class="font-semibold text-white text-sm">Find the TikTok video</p><p class="text-[#909090] text-xs mt-0.5">Open TikTok on your phone or browser and navigate to the video.</p></div>
+        <span class="flex-shrink-0 w-7 h-7 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-bold text-xs border border-gray-200">1</span>
+        <div><p class="font-semibold text-gray-900 text-sm">Find the TikTok video</p><p class="text-[#6b7280] text-xs mt-0.5">Open TikTok on your phone or browser and navigate to the video.</p></div>
       </li>
       <li class="flex gap-3">
-        <span class="flex-shrink-0 w-7 h-7 bg-gray-800 text-gray-400 rounded-full flex items-center justify-center font-bold text-xs border border-gray-700">2</span>
-        <div><p class="font-semibold text-white text-sm">Share → Copy Link</p><p class="text-[#909090] text-xs mt-0.5">Tap <em>Share → Copy Link</em> to get a link like <code class="text-xs bg-gray-800 px-1 rounded text-gray-300">vm.tiktok.com/…</code></p></div>
+        <span class="flex-shrink-0 w-7 h-7 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-bold text-xs border border-gray-200">2</span>
+        <div><p class="font-semibold text-gray-900 text-sm">Share → Copy Link</p><p class="text-[#6b7280] text-xs mt-0.5">Tap <em>Share → Copy Link</em> to get a link like <code class="text-xs bg-gray-100 px-1 rounded text-gray-700">vm.tiktok.com/…</code></p></div>
       </li>
       <li class="flex gap-3">
-        <span class="flex-shrink-0 w-7 h-7 bg-gray-800 text-gray-400 rounded-full flex items-center justify-center font-bold text-xs border border-gray-700">3</span>
-        <div><p class="font-semibold text-white text-sm">Paste &amp; download — no watermark</p><p class="text-[#909090] text-xs mt-0.5">Click <strong class="text-white">Grab Video</strong> and save the clean MP4. Watermark removed automatically.</p></div>
+        <span class="flex-shrink-0 w-7 h-7 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-bold text-xs border border-gray-200">3</span>
+        <div><p class="font-semibold text-gray-900 text-sm">Paste &amp; download — no watermark</p><p class="text-[#6b7280] text-xs mt-0.5">Click <strong class="text-gray-900">Grab Video</strong> and save the clean MP4. Watermark removed automatically.</p></div>
       </li>
     </ol>
   </section>
 
-  <!-- ─── NATIVE BANNER — Mid-page "Recommended Content" ───────────────── -->
+  <!-- ─── BANNER — Mid-page "Recommended Content" ───────────────────────── -->
   <div class="my-8">
     <p class="ad-label mb-2">Recommended Content</p>
     <div class="rec-box p-3">
-      <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2-mid"></div>
+      <div class="banner-wrap">
+        <div class="hidden md:block">
+          <script>atOptions={'key':'bdaf2212efd1c570eb92747dc8a4ae59','format':'iframe','height':90,'width':728,'params':{}};</script>
+          <script src="https://www.highperformanceformat.com/bdaf2212efd1c570eb92747dc8a4ae59/invoke.js"></script>
+        </div>
+        <div class="block md:hidden">
+          <script>atOptions={'key':'3660345d7ec8fd060c0beee5d3e4928f','format':'iframe','height':50,'width':320,'params':{}};</script>
+          <script src="https://www.highperformanceformat.com/3660345d7ec8fd060c0beee5d3e4928f/invoke.js"></script>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- ─── FAQ ─────────────────────────────────────────────────────────── -->
   <section class="card p-5 sm:p-8">
-    <h2 class="text-lg font-bold text-white mb-6">Frequently Asked Questions</h2>
+    <h2 class="text-lg font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
     <div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">Is GrabbVideos free to use?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">Yes — 100% free, unlimited, no account required. Just paste, grab, and download.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">Is GrabbVideos free to use?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">Yes — 100% free, unlimited, no account required. Just paste, grab, and download.</p>
       </div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">Does it remove the TikTok watermark?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">Yes. GrabbVideos fetches the original source video directly — the downloaded MP4 has no TikTok watermark.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">Does it remove the TikTok watermark?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">Yes. GrabbVideos fetches the original source video directly — the downloaded MP4 has no TikTok watermark.</p>
       </div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">What Instagram content can I download?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">Reels, video Posts, and IGTV from <strong class="text-gray-300">public</strong> accounts. Private accounts are not accessible.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">What Instagram content can I download?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">Reels, video Posts, and IGTV from <strong class="text-gray-700">public</strong> accounts. Private accounts are not accessible.</p>
       </div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">What video quality will I get?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">GrabbVideos always selects the best available MP4 quality — up to HD/1080p, matching the original upload.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">What video quality will I get?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">GrabbVideos always selects the best available MP4 quality — up to HD/1080p, matching the original upload.</p>
       </div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">Do I need to install anything?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">No. 100% browser-based. No app, no extension, nothing to install.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">Do I need to install anything?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">No. 100% browser-based. No app, no extension, nothing to install.</p>
       </div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">Is my data safe?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">We do not store or share URLs. All processing is real-time and discarded immediately after the download. See our <a href="/privacy.html" class="text-violet-400 underline">Privacy Policy</a>.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">Is my data safe?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">We do not store or share URLs. All processing is real-time and discarded immediately after the download. See our <a href="/privacy.html" class="text-violet-600 underline">Privacy Policy</a>.</p>
       </div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">Is it legal to download Instagram or TikTok videos?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">Downloading for personal, offline viewing is generally accepted in most regions. Never re-upload content you don't own without the creator's permission, as that may infringe copyright. Always respect each platform's terms of service.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">Is it legal to download Instagram or TikTok videos?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">Downloading for personal, offline viewing is generally accepted in most regions. Never re-upload content you don't own without the creator's permission, as that may infringe copyright. Always respect each platform's terms of service.</p>
       </div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">Can I download videos from a private account?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">No. GrabbVideos can only access <strong class="text-gray-300">public</strong> content. Private profiles are protected and cannot be fetched without authentication, keeping user privacy intact.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">Can I download videos from a private account?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">No. GrabbVideos can only access <strong class="text-gray-700">public</strong> content. Private profiles are protected and cannot be fetched without authentication, keeping user privacy intact.</p>
       </div>
       <div class="faq-item py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">Does GrabbVideos work on iPhone and Android?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">Yes. The site is fully responsive and works in any mobile browser — Safari on iOS, Chrome on Android, Firefox, and more. No app or extension required.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">Does GrabbVideos work on iPhone and Android?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">Yes. The site is fully responsive and works in any mobile browser — Safari on iOS, Chrome on Android, Firefox, and more. No app or extension required.</p>
       </div>
       <div class="py-4">
-        <h3 class="font-semibold text-white text-sm mb-1">Why do I get "Could not grab this video"?</h3>
-        <p class="text-[#909090] text-xs leading-relaxed">The most common causes are: the account is private, the video has been deleted, or the URL was incomplete. Tap <em>Share → Copy Link</em> directly in the app to get the full URL, then try again.</p>
+        <h3 class="font-semibold text-gray-900 text-sm mb-1">Why do I get "Could not grab this video"?</h3>
+        <p class="text-[#6b7280] text-xs leading-relaxed">The most common causes are: the account is private, the video has been deleted, or the URL was incomplete. Tap <em>Share → Copy Link</em> directly in the app to get the full URL, then try again.</p>
       </div>
     </div>
   </section>
 
-  <!-- ─── NATIVE BANNER — Bottom (high scroll-depth, high eCPM) ─────────── -->
+  <!-- ─── BANNER — Bottom "Sponsored" ───────────────────────────────────── -->
   <div class="my-10">
     <p class="ad-label mb-2">Sponsored</p>
     <div class="rec-box p-3">
-      <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2-bottom"></div>
+      <div class="banner-wrap">
+        <div class="hidden md:block">
+          <script>atOptions={'key':'bdaf2212efd1c570eb92747dc8a4ae59','format':'iframe','height':90,'width':728,'params':{}};</script>
+          <script src="https://www.highperformanceformat.com/bdaf2212efd1c570eb92747dc8a4ae59/invoke.js"></script>
+        </div>
+        <div class="block md:hidden">
+          <script>atOptions={'key':'3660345d7ec8fd060c0beee5d3e4928f','format':'iframe','height':50,'width':320,'params':{}};</script>
+          <script src="https://www.highperformanceformat.com/3660345d7ec8fd060c0beee5d3e4928f/invoke.js"></script>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -560,19 +585,19 @@
 <!-- ══════════════════════════════════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════════════════════════════════════ -->
-<footer style="background:#111110; border-top:1px solid #222221;" class="text-[#909090] py-8 px-4">
+<footer style="background:#f3f4f6; border-top:1px solid #e5e5e3;" class="text-[#595959] py-8 px-4">
   <div class="max-w-4xl mx-auto text-center space-y-3">
-    <p class="text-white font-bold tracking-tight">GrabbVideos</p>
+    <p class="text-gray-900 font-bold tracking-tight">GrabbVideos</p>
     <p class="text-xs max-w-md mx-auto">
       Free tool to download Instagram and TikTok videos. Only download content you own or have permission to use.
     </p>
     <div class="flex flex-wrap justify-center gap-4 text-xs pt-1">
-      <a href="/"             class="hover:text-white transition-colors">Home</a>
-      <a href="/privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-      <a href="/terms.html"   class="hover:text-white transition-colors">Terms of Service</a>
-      <a href="mailto:hello@grabbvideos.com" class="hover:text-white transition-colors">Contact</a>
+      <a href="/"             class="hover:text-gray-900 transition-colors">Home</a>
+      <a href="/privacy.html" class="hover:text-gray-900 transition-colors">Privacy Policy</a>
+      <a href="/terms.html"   class="hover:text-gray-900 transition-colors">Terms of Service</a>
+      <a href="mailto:hello@grabbvideos.com" class="hover:text-gray-900 transition-colors">Contact</a>
     </div>
-    <p class="text-xs text-[#848484]">© <span id="year"></span> GrabbVideos. All rights reserved.</p>
+    <p class="text-xs text-[#595959]">© <span id="year"></span> GrabbVideos. All rights reserved.</p>
   </div>
 </footer>
 

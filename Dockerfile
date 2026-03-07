@@ -72,7 +72,7 @@ EXPOSE 3000
 # ── Health check ─────────────────────────────────────────────────────────────
 #   Coolify uses this to determine container readiness.
 HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
-    CMD curl -fsS http://localhost:3000 > /dev/null || exit 1
+    CMD node -e "require('http').get('http://127.0.0.1:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})" || exit 1
 
 # ── Start ─────────────────────────────────────────────────────────────────────
 CMD ["node", "server.js"]

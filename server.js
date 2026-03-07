@@ -178,6 +178,6 @@ app.get('*', (_req, res) => {
 });
 
 /* ── Start ──────────────────────────────────────────────────────────────── */
-app.listen(PORT, () => {
-  console.log(`\n🚀  GrabbVideos running at http://localhost:${PORT}\n`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n🚀  GrabbVideos running on port ${PORT}\n`);
 });

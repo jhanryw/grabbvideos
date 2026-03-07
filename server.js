@@ -8,6 +8,15 @@ const { spawn } = require('child_process');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
+/* ── Explicit routes for sitemap & robots (ensure correct MIME types) ────── */
+app.get('/sitemap.xml', (_req, res) => {
+  res.type('text/xml').sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
+app.get('/robots.txt', (_req, res) => {
+  res.type('text/plain').sendFile(path.join(__dirname, 'public', 'robots.txt'));
+});
+
 /* ── yt-dlp binary path ─────────────────────────────────────────────────── */
 /* Always use the explicit path installed by Dockerfile curl step.           */
 const YT_DLP = process.env.YT_DLP_PATH || '/usr/local/bin/yt-dlp';

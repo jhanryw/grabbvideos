@@ -1,12 +1,16 @@
 'use strict';
 
-const express   = require('express');
-const cors      = require('cors');
-const path      = require('path');
-const { spawn } = require('child_process');
+const express     = require('express');
+const cors        = require('cors');
+const path        = require('path');
+const compression = require('compression');
+const { spawn }   = require('child_process');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
+
+/* ── Gzip compression for all responses ─────────────────────────────────── */
+app.use(compression());
 
 /* ── Explicit routes for sitemap & robots (ensure correct MIME types) ────── */
 app.get('/sitemap.xml', (_req, res) => {
@@ -35,7 +39,10 @@ const BASE_ARGS = [
 /* ── Middleware ─────────────────────────────────────────────────────────── */
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '7d',
+  etag:   true,
+}));
 
 /* ── Allowed hosts ──────────────────────────────────────────────────────── */
 const ALLOWED_HOSTS = [

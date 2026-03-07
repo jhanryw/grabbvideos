@@ -14,9 +14,15 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --production
+RUN npm install
 
 COPY . .
+
+# Build purged Tailwind CSS (removes 120 KB CDN request)
+RUN npm run build:css
+
+# Strip devDependencies to keep image lean
+RUN npm prune --production
 
 # Garante que o PATH inclui o binário do yt-dlp
 ENV PATH="/usr/local/bin:${PATH}" \

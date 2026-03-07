@@ -148,9 +148,7 @@ function renderHeader(page) {
 <header class="hero-gradient text-white">
   <div class="max-w-4xl mx-auto px-4 pt-6 pb-8 text-center">
     <a href="/" class="inline-flex justify-center mb-3">
-      <img src="/grabbvideos.png" alt="GrabbVideos" width="120" height="92"
-           class="h-20 sm:h-24 w-auto"
-           style="filter:drop-shadow(0 2px 8px rgba(0,0,0,.25))" />
+      <span class="text-white text-2xl sm:text-3xl font-bold tracking-tight">GrabbVideos</span>
     </a>
     ${showBanner ? `
     <div class="hidden md:flex justify-center my-3">
@@ -251,8 +249,8 @@ function renderFooter() {
   return `
 <footer style="background:#f3f4f6;border-top:1px solid #e5e5e3;" class="text-[#595959] py-8 px-4 mt-8">
   <div class="max-w-5xl mx-auto text-center space-y-3">
-    <a href="/">
-      <img src="/grabbvideosfav.png" alt="GrabbVideos" width="48" height="48" class="h-12 w-12 mx-auto rounded-xl" />
+    <a href="/" class="text-gray-900 font-bold text-lg hover:text-gray-700 transition-colors inline-block">
+      GrabbVideos
     </a>
     <p class="text-xs max-w-md mx-auto">Free tool to download Instagram and TikTok videos. Only download content you own or have permission to use.</p>
     <div class="flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-xs pt-1">

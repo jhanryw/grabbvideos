@@ -4,17 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ══ SEO Primary ══════════════════════════════════════════════════════ -->
+  <!-- ══ SEO ══════════════════════════════════════════════════════════════ -->
   <title>GrabbVideos — Instagram & TikTok Video Downloader | No Watermark</title>
-  <meta name="description"
-    content="Download Instagram Reels, Stories and TikTok videos online for free — no watermark, no signup, high quality MP4. The fastest social video downloader." />
-  <meta name="keywords"
-    content="instagram reels downloader, tiktok downloader no watermark, download instagram video online, tiktok video download mp4, instagram video downloader free, reels downloader, social video downloader, grabbvideos" />
+  <meta name="description" content="Download Instagram Reels, Stories and TikTok videos online for free — no watermark, no signup, high quality MP4. The fastest social video downloader." />
+  <meta name="keywords" content="instagram reels downloader, tiktok downloader no watermark, download instagram video online, tiktok video download mp4, instagram video downloader free, reels downloader, social video downloader, grabbvideos" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="GrabbVideos" />
   <link rel="canonical" href="https://grabbvideos.com" />
 
-  <!-- ══ Open Graph ═══════════════════════════════════════════════════════ -->
+  <!-- ══ Open Graph ════════════════════════════════════════════════════════ -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://grabbvideos.com" />
   <meta property="og:title"       content="GrabbVideos — Instagram & TikTok Video Downloader" />
@@ -22,14 +20,14 @@
   <meta property="og:image"       content="https://grabbvideos.com/og-image.png" />
   <meta property="og:site_name"   content="GrabbVideos" />
 
-  <!-- ══ Twitter Card ═════════════════════════════════════════════════════ -->
+  <!-- ══ Twitter Card ══════════════════════════════════════════════════════ -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:site"        content="@grabbvideos" />
   <meta name="twitter:title"       content="GrabbVideos — Instagram & TikTok Downloader" />
   <meta name="twitter:description" content="Download Instagram Reels and TikTok videos in HD — no watermark, 100% free." />
   <meta name="twitter:image"       content="https://grabbvideos.com/og-image.png" />
 
-  <!-- ══ JSON-LD — SoftwareApplication ════════════════════════════════════ -->
+  <!-- ══ JSON-LD ═══════════════════════════════════════════════════════════ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,30 +37,13 @@
     "description": "Free online tool to download Instagram Reels, Stories and TikTok videos without watermark in MP4 format.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
-    "browserRequirements": "Requires JavaScript",
     "inLanguage": "en",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "5820"
-    }
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "5820" }
   }
   </script>
 
-  <!-- ══════════════════════════════════════════════════════════════════════
-       GOOGLE ADSENSE — Auto Ads
-       Replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID
-  ═══════════════════════════════════════════════════════════════════════════
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-       crossorigin="anonymous"></script>
-  -->
-
-  <!-- ══ ADSTERRA — Popunder ══════════════════════════════════════════════ -->
+  <!-- ══ ADSTERRA — Popunder (loads silently, fires on first click) ════════ -->
   <script src="https://pl28866286.effectivegatecpm.com/03/d2/e2/03d2e2d61f7507bbd6093e225204c195.js"></script>
 
   <!-- ══ Microsoft Clarity ════════════════════════════════════════════════ -->
@@ -74,7 +55,7 @@
     })(window, document, "clarity", "script", "vs3g2w2n2i");
   </script>
 
-  <!-- ══ Google Analytics ══════════════════════════════════════════════════ -->
+  <!-- ══ Google Analytics ═════════════════════════════════════════════════ -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J0QCK44RS8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -83,130 +64,171 @@
     gtag('config', 'G-J0QCK44RS8');
   </script>
 
-  <!-- ══ Tailwind CSS CDN ══════════════════════════════════════════════════ -->
+  <!-- ══ ADSTERRA — Native Banner script (loaded once, used in 2 zones) ══ -->
+  <script async="async" data-cfasync="false"
+    src="https://pl28866342.effectivegatecpm.com/fcc8eca8dd1c8f4a00aad6769e6ad0a2/invoke.js"></script>
+
+  <!-- ══ AdSense (uncomment when approved) ════════════════════════════════
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
+
+  <!-- ══ Tailwind CSS ═════════════════════════════════════════════════════ -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* ── Brand tokens ──────────────────────────────────────────── */
+    /* ── Dark palette ──────────────────────────────────────────────── */
     :root {
-      --brand:       #7c3aed;
-      --brand-light: #a78bfa;
-      --brand-dark:  #5b21b6;
+      --bg:        #171716;
+      --surface:   #1e1e1c;
+      --surface2:  #252523;
+      --border:    #2e2e2b;
+      --accent:    #7c3aed;
+      --accent-h:  #6d28d9;
     }
 
-    /* ── Hero gradient ─────────────────────────────────────────── */
+    body { background: var(--bg); color: #e5e5e3; }
+
+    /* ── Hero gradient ─────────────────────────────────────────────── */
     .hero-gradient {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a21caf 100%);
+      background: linear-gradient(160deg, #1a1040 0%, #3b1d8a 50%, #5b1fa8 100%);
     }
 
-    /* ── Spinner ───────────────────────────────────────────────── */
-    @keyframes spin-ease {
-      to { transform: rotate(360deg); }
+    /* ── Cards ─────────────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
     }
-    .spinner { animation: spin-ease 0.9s linear infinite; }
 
-    /* ── Fade in ───────────────────────────────────────────────── */
-    .fade-in {
-      animation: fadeIn .4s ease both;
+    /* ── Input ─────────────────────────────────────────────────────── */
+    #urlInput {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      color: #e5e5e3;
+      border-radius: .75rem;
     }
+    #urlInput::placeholder { color: #5a5a58; }
+    #urlInput:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124,58,237,.25);
+    }
+
+    /* ── Spinner ───────────────────────────────────────────────────── */
+    @keyframes spin-ease { to { transform: rotate(360deg); } }
+    .spinner { animation: spin-ease 0.85s linear infinite; }
+
+    /* ── Fade-in ───────────────────────────────────────────────────── */
+    .fade-in { animation: fadeIn .35s ease both; }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Platform badge gradients ──────────────────────────────── */
+    /* ── Platform badges ───────────────────────────────────────────── */
     .ig-badge { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-    .tt-badge { background: #010101; }
+    .tt-badge { background: #111; border: 1px solid #333; }
 
-    /* ── Focus ring ────────────────────────────────────────────── */
-    input:focus { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,.35); }
-
-    /* ── Ad slot label ─────────────────────────────────────────── */
-    .ad-slot {
-      display: flex; align-items: center; justify-content: center;
-      background: #f3f4f6; border: 1px dashed #d1d5db;
-      color: #9ca3af; font-size: .65rem; letter-spacing:.08em;
-      text-transform: uppercase; border-radius: .75rem;
+    /* ── Ad zone wrapper ───────────────────────────────────────────── */
+    .ad-zone {
+      width: 100%;
+      overflow: hidden;
     }
+    .ad-zone-label {
+      display: block;
+      text-align: center;
+      font-size: .6rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #4a4a48;
+      margin-bottom: .35rem;
+    }
+
+    /* ── Loading ad spotlight ──────────────────────────────────────── */
+    .loading-ad-wrap {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      overflow: hidden;
+      padding: .5rem;
+    }
+
+    /* ── Divider ───────────────────────────────────────────────────── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── FAQ item ──────────────────────────────────────────────────── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
   </style>
 </head>
 
-<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+<!-- ─────────────────────────────────────────────────────────────────────── -->
+<body class="font-sans antialiased min-h-screen">
 
-<!-- ════════════════════════════════════════════════════════════════════════
-     AD SLOT — TOP LEADERBOARD (728×90)
-     Replace the inner comment with your AdSense or Adsterra tag
-════════════════════════════════════════════════════════════════════════════ -->
-<div class="w-full flex justify-center py-2 bg-white border-b border-gray-100">
-  <div class="ad-slot w-full max-w-[728px] h-[90px]">
-    <!-- AdSense 728×90 ▼
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:728px;height:90px"
-         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-         data-ad-slot="XXXXXXXXXX"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
-    <span>Advertisement · 728×90</span>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════════════════════
-     HEADER / HERO
-════════════════════════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════════════════
+     HERO HEADER
+══════════════════════════════════════════════════════════════════════════ -->
 <header class="hero-gradient text-white">
-  <div class="max-w-5xl mx-auto px-4 py-14 text-center">
+  <div class="max-w-4xl mx-auto px-4 pt-10 pb-12 text-center">
 
-    <!-- Wordmark -->
-    <a href="/" class="inline-flex items-center gap-2 mb-6 group">
-      <svg class="w-9 h-9" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="10" fill="white" fill-opacity=".15"/>
+    <!-- Logo wordmark -->
+    <a href="/" class="inline-flex items-center gap-2 mb-5">
+      <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="9" fill="white" fill-opacity=".12"/>
         <path d="M12 28V16l8-6 8 6v12H24v-7h-8v7H12Z" fill="white"/>
       </svg>
-      <span class="text-2xl font-extrabold tracking-tight text-white">GrabbVideos</span>
+      <span class="text-xl font-extrabold tracking-tight">GrabbVideos</span>
     </a>
 
-    <!-- Platform badges -->
-    <div class="flex items-center justify-center gap-3 mb-6">
-      <div class="ig-badge flex items-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
+    <!-- Platform chips -->
+    <div class="flex items-center justify-center gap-2 mb-5">
+      <span class="ig-badge flex items-center gap-1.5 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         Instagram
-      </div>
-      <span class="text-purple-300 text-2xl font-thin">+</span>
-      <div class="tt-badge flex items-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
-        </svg>
+      </span>
+      <span class="text-purple-400 text-lg font-thin">+</span>
+      <span class="tt-badge flex items-center gap-1.5 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
         TikTok
-      </div>
+      </span>
     </div>
 
     <!-- H1 -->
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 drop-shadow">
-      Grab Any Video.<br class="hidden sm:block" />
-      <span class="text-purple-200">No Watermark. Free.</span>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-3">
+      Grab Any Video.<br/>
+      <span class="text-violet-300">No Watermark. Free.</span>
     </h1>
-    <p class="text-lg md:text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
+    <p class="text-purple-200 text-sm sm:text-base max-w-lg mx-auto">
       Download <strong>Instagram Reels, Stories &amp; Posts</strong> and <strong>TikTok videos</strong>
-      in high-quality MP4 — no account, no app, no watermark.
+      in HD MP4 — no account, no app, instant.
     </p>
   </div>
 </header>
 
-<!-- ════════════════════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════════════
      MAIN
-════════════════════════════════════════════════════════════════════════════ -->
-<main class="max-w-5xl mx-auto px-4 py-10 space-y-10">
+══════════════════════════════════════════════════════════════════════════ -->
+<main class="max-w-4xl mx-auto px-4 py-8 space-y-6">
 
-  <!-- ─── Download Card ─────────────────────────────────────────────────── -->
-  <section class="bg-white rounded-2xl shadow-xl p-6 md:p-10">
+  <!-- ─── AD ZONE A: Below Hero, Above Tool Card ────────────────────────
+       Native Banner - first impression, high visibility zone             -->
+  <div class="ad-zone">
+    <span class="ad-zone-label">Sponsored</span>
+    <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2"></div>
+  </div>
 
-    <h2 class="text-2xl font-bold text-gray-800 text-center mb-1">
+  <!-- ─── TOOL CARD ──────────────────────────────────────────────────── -->
+  <section class="card p-5 sm:p-8">
+
+    <h2 class="text-xl font-bold text-white text-center mb-1">
       Paste your video link below
     </h2>
-    <p class="text-gray-500 text-center text-sm mb-8">
-      Supports: Instagram Reels · Stories · Posts &nbsp;|&nbsp; TikTok Videos
+    <p class="text-gray-500 text-center text-xs mb-6">
+      Instagram Reels · Stories · Posts &nbsp;·&nbsp; TikTok Videos
     </p>
 
     <!-- Input row -->
@@ -215,78 +237,73 @@
         id="urlInput"
         type="url"
         placeholder="https://www.instagram.com/p/... or https://www.tiktok.com/@..."
-        class="flex-1 px-4 py-4 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 transition-all duration-200 text-sm md:text-base"
+        class="flex-1 px-4 py-3.5 text-sm transition-all duration-200"
         autocomplete="off"
         spellcheck="false"
       />
       <button
         id="downloadBtn"
-        class="flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 text-base shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed min-w-[150px]"
+        class="flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-sm shadow-lg hover:shadow-violet-900/40 disabled:opacity-50 disabled:cursor-not-allowed min-w-[140px] flex-shrink-0"
       >
-        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
         </svg>
         <span id="btnLabel">Grab Video</span>
       </button>
     </div>
 
-    <!-- ── LOADING STATE ─────────────────────────────────────────── -->
-    <div id="loadingState" class="hidden mt-8 flex flex-col items-center gap-4 py-2 fade-in">
+    <!-- ┌─────────────────────────────────────────────────────────────┐
+         │  LOADING STATE — Most valuable ad zone (captive audience)  │
+         └─────────────────────────────────────────────────────────────┘ -->
+    <div id="loadingState" class="hidden mt-6 fade-in">
 
-      <!-- Spinner -->
-      <div class="relative w-16 h-16">
-        <div class="spinner absolute inset-0 rounded-full border-4 border-violet-200 border-t-violet-600"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/>
-          </svg>
+      <!-- Progress indicator -->
+      <div class="flex flex-col items-center gap-3 mb-5">
+        <div class="relative w-14 h-14">
+          <div class="spinner absolute inset-0 rounded-full border-[3px] border-violet-900 border-t-violet-400"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/>
+            </svg>
+          </div>
+        </div>
+        <div class="text-center">
+          <p class="text-white font-semibold">Grabbing your video…</p>
+          <p class="text-gray-500 text-xs mt-0.5" id="countdownText">Please wait</p>
         </div>
       </div>
-      <div class="text-center">
-        <p class="text-gray-700 font-semibold text-lg">Grabbing your video...</p>
-        <p class="text-gray-400 text-sm mt-1" id="countdownText">Please wait</p>
+
+      <!-- ★ PRIMARY AD ZONE: Native Banner during loading window ★
+           User is captive for 3 s — highest CTR position on the page  -->
+      <div class="loading-ad-wrap">
+        <p class="text-center text-[10px] text-gray-600 uppercase tracking-widest mb-2">While you wait</p>
+        <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2-wait"></div>
       </div>
 
-      <!-- AD SLOT — Shown during loading (3-second dwell = extra ad impressions)
-           ═══════════════════════════════════════════════════════════════════ -->
-      <div class="w-full max-w-[300px] mt-2">
-        <div class="ad-slot w-[300px] h-[250px]">
-          <!-- AdSense 300×250 ▼
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:300px;height:250px"
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-               data-ad-slot="XXXXXXXXXX"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          -->
-          <script async="async" data-cfasync="false" src="https://pl28866342.effectivegatecpm.com/fcc8eca8dd1c8f4a00aad6769e6ad0a2/invoke.js"></script>
-          <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2-loading"></div>
-        </div>
-      </div>
     </div>
 
     <!-- ── RESULT STATE ──────────────────────────────────────────── -->
-    <div id="resultState" class="hidden mt-8 fade-in">
-      <div class="flex flex-col sm:flex-row items-center gap-5 p-5 bg-emerald-50 rounded-xl border border-emerald-200">
-        <div class="flex-shrink-0">
-          <img
-            id="thumbnail"
-            src=""
-            alt="Video thumbnail"
-            class="w-32 h-24 object-cover rounded-lg shadow"
-            onerror="this.style.display='none'"
-          />
-        </div>
-        <div class="flex-1 text-center sm:text-left">
-          <p class="text-xs text-emerald-600 font-semibold uppercase tracking-wide mb-1">✓ Video ready</p>
-          <p id="videoTitle" class="font-bold text-gray-800 text-base mb-1 line-clamp-2"></p>
-          <p id="videoDuration" class="text-sm text-gray-500 mb-4"></p>
+    <div id="resultState" class="hidden mt-6 fade-in">
+      <div class="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-xl"
+           style="background:#1a2e1a; border:1px solid #2d4a2d;">
+        <img
+          id="thumbnail"
+          src=""
+          alt="Video thumbnail"
+          class="w-28 h-20 object-cover rounded-lg flex-shrink-0"
+          onerror="this.style.display='none'"
+        />
+        <div class="flex-1 text-center sm:text-left min-w-0">
+          <p class="text-xs text-emerald-400 font-semibold uppercase tracking-wide mb-1">✓ Video ready</p>
+          <p id="videoTitle" class="font-semibold text-white text-sm mb-1 line-clamp-2"></p>
+          <p id="videoDuration" class="text-xs text-gray-500 mb-3"></p>
           <a
             id="downloadLink"
             href="#"
-            class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg text-sm"
+            class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 rounded-xl transition-all duration-200 text-sm shadow-lg"
             download="grabbvideos.mp4"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
             </svg>
             Download MP4
@@ -296,201 +313,174 @@
     </div>
 
     <!-- ── ERROR STATE ───────────────────────────────────────────── -->
-    <div id="errorState" class="hidden mt-8 fade-in">
-      <div class="flex items-start gap-4 p-5 bg-red-50 rounded-xl border border-red-200">
-        <svg class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <div id="errorState" class="hidden mt-6 fade-in">
+      <div class="flex items-start gap-3 p-4 rounded-xl"
+           style="background:#2a1515; border:1px solid #4a2020;">
+        <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 8v4m0 4h.01"/>
         </svg>
         <div>
-          <p class="font-semibold text-red-700 mb-1">Could not grab this video</p>
-          <p id="errorMessage" class="text-red-600 text-sm"></p>
+          <p class="font-semibold text-red-300 text-sm mb-0.5">Could not grab this video</p>
+          <p id="errorMessage" class="text-red-400/80 text-xs"></p>
         </div>
       </div>
     </div>
 
   </section>
 
-  <!-- ─── ADSTERRA — Native Banner ────────────────────────────────────── -->
-  <div class="flex justify-center">
-    <script async="async" data-cfasync="false" src="https://pl28866342.effectivegatecpm.com/fcc8eca8dd1c8f4a00aad6769e6ad0a2/invoke.js"></script>
-    <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2"></div>
-  </div>
-
-  <!-- ─── HOW TO: Instagram ─────────────────────────────────────────────── -->
-  <section class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
-    <div class="flex items-center gap-3 mb-6">
-      <div class="ig-badge w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
-        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
+  <!-- ─── HOW-TO: Instagram ───────────────────────────────────────────── -->
+  <section class="card p-5 sm:p-8">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="ig-badge w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
+        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </div>
-      <h2 class="text-2xl font-bold text-gray-800">How to Download Instagram Reels &amp; Videos</h2>
+      <h2 class="text-lg font-bold text-white">How to Download Instagram Reels &amp; Videos</h2>
     </div>
-    <ol class="space-y-5">
-      <li class="flex gap-4">
-        <span class="flex-shrink-0 w-9 h-9 bg-violet-100 text-violet-700 rounded-full flex items-center justify-center font-extrabold text-sm">1</span>
+    <ol class="space-y-4">
+      <li class="flex gap-3">
+        <span class="flex-shrink-0 w-7 h-7 bg-violet-900/60 text-violet-300 rounded-full flex items-center justify-center font-bold text-xs border border-violet-800">1</span>
         <div>
-          <p class="font-semibold text-gray-800">Open the video on Instagram</p>
-          <p class="text-gray-500 text-sm mt-0.5">Go to the Reel, Post, or Story you want to save — via the app or web browser.</p>
+          <p class="font-semibold text-white text-sm">Open the video on Instagram</p>
+          <p class="text-gray-500 text-xs mt-0.5">Go to the Reel, Post, or Story you want to save — via the app or browser.</p>
         </div>
       </li>
-      <li class="flex gap-4">
-        <span class="flex-shrink-0 w-9 h-9 bg-violet-100 text-violet-700 rounded-full flex items-center justify-center font-extrabold text-sm">2</span>
+      <li class="flex gap-3">
+        <span class="flex-shrink-0 w-7 h-7 bg-violet-900/60 text-violet-300 rounded-full flex items-center justify-center font-bold text-xs border border-violet-800">2</span>
         <div>
-          <p class="font-semibold text-gray-800">Copy the link</p>
-          <p class="text-gray-500 text-sm mt-0.5">Tap the three dots (···) → <em>Copy link</em>. On desktop, copy the URL from the address bar.</p>
+          <p class="font-semibold text-white text-sm">Copy the link</p>
+          <p class="text-gray-500 text-xs mt-0.5">Tap ··· → <em>Copy link</em>. On desktop, copy the URL from the address bar.</p>
         </div>
       </li>
-      <li class="flex gap-4">
-        <span class="flex-shrink-0 w-9 h-9 bg-violet-100 text-violet-700 rounded-full flex items-center justify-center font-extrabold text-sm">3</span>
+      <li class="flex gap-3">
+        <span class="flex-shrink-0 w-7 h-7 bg-violet-900/60 text-violet-300 rounded-full flex items-center justify-center font-bold text-xs border border-violet-800">3</span>
         <div>
-          <p class="font-semibold text-gray-800">Paste it here and click "Grab Video"</p>
-          <p class="text-gray-500 text-sm mt-0.5">Paste the link into the field above and hit the button. GrabbVideos processes it instantly.</p>
+          <p class="font-semibold text-white text-sm">Paste it here &amp; click "Grab Video"</p>
+          <p class="text-gray-500 text-xs mt-0.5">Paste the link above and hit the button. Processing takes just a few seconds.</p>
         </div>
       </li>
-      <li class="flex gap-4">
-        <span class="flex-shrink-0 w-9 h-9 bg-violet-100 text-violet-700 rounded-full flex items-center justify-center font-extrabold text-sm">4</span>
+      <li class="flex gap-3">
+        <span class="flex-shrink-0 w-7 h-7 bg-violet-900/60 text-violet-300 rounded-full flex items-center justify-center font-bold text-xs border border-violet-800">4</span>
         <div>
-          <p class="font-semibold text-gray-800">Click "Download MP4"</p>
-          <p class="text-gray-500 text-sm mt-0.5">The HD MP4 file saves directly to your device — no watermark, no account needed.</p>
+          <p class="font-semibold text-white text-sm">Click "Download MP4"</p>
+          <p class="text-gray-500 text-xs mt-0.5">The HD MP4 saves directly to your device — no watermark, no login needed.</p>
         </div>
       </li>
     </ol>
   </section>
 
-  <!-- ─── HOW TO: TikTok ────────────────────────────────────────────────── -->
-  <section class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
-    <div class="flex items-center gap-3 mb-6">
-      <div class="tt-badge w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0">
-        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
-        </svg>
+  <!-- ─── HOW-TO: TikTok ──────────────────────────────────────────────── -->
+  <section class="card p-5 sm:p-8">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="tt-badge w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0">
+        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
       </div>
-      <h2 class="text-2xl font-bold text-gray-800">How to Download TikTok Videos Without Watermark</h2>
+      <h2 class="text-lg font-bold text-white">How to Download TikTok Videos Without Watermark</h2>
     </div>
-    <ol class="space-y-5">
-      <li class="flex gap-4">
-        <span class="flex-shrink-0 w-9 h-9 bg-gray-100 text-gray-700 rounded-full flex items-center justify-center font-extrabold text-sm">1</span>
+    <ol class="space-y-4">
+      <li class="flex gap-3">
+        <span class="flex-shrink-0 w-7 h-7 bg-gray-800 text-gray-400 rounded-full flex items-center justify-center font-bold text-xs border border-gray-700">1</span>
         <div>
-          <p class="font-semibold text-gray-800">Find the TikTok video</p>
-          <p class="text-gray-500 text-sm mt-0.5">Open TikTok on your phone or browser and navigate to the video you want to save.</p>
+          <p class="font-semibold text-white text-sm">Find the TikTok video</p>
+          <p class="text-gray-500 text-xs mt-0.5">Open TikTok on your phone or browser and navigate to the video.</p>
         </div>
       </li>
-      <li class="flex gap-4">
-        <span class="flex-shrink-0 w-9 h-9 bg-gray-100 text-gray-700 rounded-full flex items-center justify-center font-extrabold text-sm">2</span>
+      <li class="flex gap-3">
+        <span class="flex-shrink-0 w-7 h-7 bg-gray-800 text-gray-400 rounded-full flex items-center justify-center font-bold text-xs border border-gray-700">2</span>
         <div>
-          <p class="font-semibold text-gray-800">Share → Copy Link</p>
-          <p class="text-gray-500 text-sm mt-0.5">Tap <em>Share</em> → <em>Copy Link</em>. You'll get something like <code class="text-xs bg-gray-100 px-1 rounded">https://vm.tiktok.com/...</code></p>
+          <p class="font-semibold text-white text-sm">Share → Copy Link</p>
+          <p class="text-gray-500 text-xs mt-0.5">Tap <em>Share</em> → <em>Copy Link</em> to get a link like <code class="text-xs bg-gray-800 px-1 rounded text-gray-300">https://vm.tiktok.com/…</code></p>
         </div>
       </li>
-      <li class="flex gap-4">
-        <span class="flex-shrink-0 w-9 h-9 bg-gray-100 text-gray-700 rounded-full flex items-center justify-center font-extrabold text-sm">3</span>
+      <li class="flex gap-3">
+        <span class="flex-shrink-0 w-7 h-7 bg-gray-800 text-gray-400 rounded-full flex items-center justify-center font-bold text-xs border border-gray-700">3</span>
         <div>
-          <p class="font-semibold text-gray-800">Paste &amp; download — no watermark</p>
-          <p class="text-gray-500 text-sm mt-0.5">Paste the link above, click <strong>Grab Video</strong>, and save the clean MP4 — TikTok watermark removed automatically.</p>
+          <p class="font-semibold text-white text-sm">Paste &amp; download — no watermark</p>
+          <p class="text-gray-500 text-xs mt-0.5">Paste above, click <strong class="text-white">Grab Video</strong>, and save the clean MP4. Watermark removed automatically.</p>
         </div>
       </li>
     </ol>
   </section>
 
-  <!-- ─── AD SLOT — LEADERBOARD (728×90) ───────────────────────────────── -->
-  <div class="flex justify-center">
-    <div class="ad-slot w-full max-w-[728px] h-[90px]">
-      <!-- AdSense 728×90 ▼
-      <ins class="adsbygoogle"
-           style="display:inline-block;width:728px;height:90px"
-           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-           data-ad-slot="XXXXXXXXXX"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      -->
-      <span>Advertisement · 728×90</span>
-    </div>
+  <!-- ─── AD ZONE B: Between content sections ───────────────────────────
+       Mid-page Native Banner — scroll-engaged users, high intent         -->
+  <div class="ad-zone">
+    <span class="ad-zone-label">Sponsored content</span>
+    <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2-mid"></div>
   </div>
 
-  <!-- ─── FAQ ──────────────────────────────────────────────────────────── -->
-  <section class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
-    <h2 class="text-2xl font-bold text-gray-800 mb-8">Frequently Asked Questions</h2>
-
-    <div class="space-y-6">
-      <div class="border-b border-gray-100 pb-6">
-        <h3 class="font-semibold text-gray-800 mb-2">Is GrabbVideos free to use?</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Yes — 100% free, unlimited, no account required. Just paste, grab, and download.</p>
+  <!-- ─── FAQ ────────────────────────────────────────────────────────── -->
+  <section class="card p-5 sm:p-8">
+    <h2 class="text-lg font-bold text-white mb-6">Frequently Asked Questions</h2>
+    <div class="space-y-0">
+      <div class="faq-item py-4">
+        <h3 class="font-semibold text-white text-sm mb-1">Is GrabbVideos free to use?</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Yes — 100% free, unlimited, no account required. Just paste, grab, and download.</p>
       </div>
-      <div class="border-b border-gray-100 pb-6">
-        <h3 class="font-semibold text-gray-800 mb-2">Does it remove the TikTok watermark?</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Yes. GrabbVideos fetches the original source video directly, so the downloaded MP4 has no TikTok watermark — unlike many other tools.</p>
+      <div class="faq-item py-4">
+        <h3 class="font-semibold text-white text-sm mb-1">Does it remove the TikTok watermark?</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Yes. GrabbVideos fetches the original source video directly, so the downloaded MP4 has no TikTok watermark — unlike many other tools.</p>
       </div>
-      <div class="border-b border-gray-100 pb-6">
-        <h3 class="font-semibold text-gray-800 mb-2">What Instagram content can I download?</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">You can download Reels, video Posts, and IGTV from <strong>public</strong> accounts. Private account content is not accessible due to privacy restrictions.</p>
+      <div class="faq-item py-4">
+        <h3 class="font-semibold text-white text-sm mb-1">What Instagram content can I download?</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Reels, video Posts, and IGTV from <strong class="text-gray-300">public</strong> accounts. Private accounts are not accessible due to Instagram's privacy restrictions.</p>
       </div>
-      <div class="border-b border-gray-100 pb-6">
-        <h3 class="font-semibold text-gray-800 mb-2">What video quality does GrabbVideos download?</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">GrabbVideos always selects the best available MP4 quality — usually matching the original upload resolution (up to HD/1080p).</p>
+      <div class="faq-item py-4">
+        <h3 class="font-semibold text-white text-sm mb-1">What video quality will I get?</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">GrabbVideos always selects the best available MP4 quality — usually matching the original upload resolution, up to HD/1080p.</p>
       </div>
-      <div class="border-b border-gray-100 pb-6">
-        <h3 class="font-semibold text-gray-800 mb-2">Do I need to install anything?</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">No. GrabbVideos is a browser-based tool. There is no app, no extension, and nothing to install.</p>
+      <div class="faq-item py-4">
+        <h3 class="font-semibold text-white text-sm mb-1">Do I need to install anything?</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">No. 100% browser-based. No app, no extension, nothing to install.</p>
       </div>
-      <div>
-        <h3 class="font-semibold text-gray-800 mb-2">Is my data safe?</h3>
-        <p class="text-gray-500 text-sm leading-relaxed">Absolutely. We do not store, log, or share the URLs you submit. All processing happens in real time and is discarded immediately after the download completes. See our <a href="/privacy.html" class="text-violet-600 hover:underline">Privacy Policy</a>.</p>
+      <div class="py-4">
+        <h3 class="font-semibold text-white text-sm mb-1">Is my data safe?</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">We do not store or share your URLs. All processing is real-time and discarded immediately after the download. See our <a href="/privacy.html" class="text-violet-400 hover:underline">Privacy Policy</a>.</p>
       </div>
     </div>
   </section>
 
-  <!-- ─── AD SLOT — BOTTOM LEADERBOARD (728×90) ────────────────────────── -->
-  <div class="flex justify-center pb-4">
-    <div class="ad-slot w-full max-w-[728px] h-[90px]">
-      <!-- AdSense 728×90 ▼
-      <ins class="adsbygoogle"
-           style="display:inline-block;width:728px;height:90px"
-           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-           data-ad-slot="XXXXXXXXXX"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      -->
-      <span>Advertisement · 728×90</span>
-    </div>
+  <!-- ─── AD ZONE C: Bottom — users who scrolled past everything ────────
+       High scroll-depth = high engagement signal, good for eCPM          -->
+  <div class="ad-zone pb-2">
+    <span class="ad-zone-label">Sponsored</span>
+    <div id="container-fcc8eca8dd1c8f4a00aad6769e6ad0a2-bottom"></div>
   </div>
 
 </main>
 
-<!-- ════════════════════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════════════
      FOOTER
-════════════════════════════════════════════════════════════════════════════ -->
-<footer class="bg-gray-900 text-gray-400 py-10 px-4 mt-4">
-  <div class="max-w-5xl mx-auto text-center space-y-3">
-    <p class="text-white font-bold text-lg tracking-tight">GrabbVideos</p>
-    <p class="text-sm text-gray-500 max-w-xl mx-auto">
-      Free online tool to download Instagram and TikTok videos. Only download content you own or have permission to use. Respect copyright and creators' rights.
+══════════════════════════════════════════════════════════════════════════ -->
+<footer style="background:#111110; border-top:1px solid #222221;" class="text-gray-500 py-8 px-4 mt-2">
+  <div class="max-w-4xl mx-auto text-center space-y-3">
+    <p class="text-white font-bold tracking-tight">GrabbVideos</p>
+    <p class="text-xs text-gray-600 max-w-md mx-auto">
+      Free tool to download Instagram and TikTok videos. Only download content you own or have permission to use. Respect creators' rights.
     </p>
-    <div class="flex flex-wrap justify-center gap-5 text-sm pt-2">
+    <div class="flex flex-wrap justify-center gap-4 text-xs pt-1">
       <a href="/"              class="hover:text-white transition-colors">Home</a>
       <a href="/privacy.html"  class="hover:text-white transition-colors">Privacy Policy</a>
       <a href="/terms.html"    class="hover:text-white transition-colors">Terms of Service</a>
       <a href="mailto:hello@grabbvideos.com" class="hover:text-white transition-colors">Contact</a>
     </div>
-    <p class="text-xs text-gray-600 pt-2">© <span id="year"></span> GrabbVideos. All rights reserved.</p>
+    <p class="text-xs text-gray-700">© <span id="year"></span> GrabbVideos. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- ══ ADSTERRA — Social Bar (sticky floating widget) ═════════════════════ -->
+<!-- ══ ADSTERRA — Social Bar (sticky floating widget, fires after page load) -->
 <script src="https://pl28866350.effectivegatecpm.com/07/21/32/0721323b213d354fd931d51a9c5646cb.js"></script>
 
-<!-- ════════════════════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════════════
      JAVASCRIPT
-════════════════════════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════════════════════════════════════ -->
 <script>
-  /* ── Year ──────────────────────────────────────────────────── */
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ── DOM refs ──────────────────────────────────────────────── */
   const urlInput     = document.getElementById('urlInput');
   const downloadBtn  = document.getElementById('downloadBtn');
   const btnLabel     = document.getElementById('btnLabel');
   const countdownTxt = document.getElementById('countdownText');
 
-  /* ── Helpers ───────────────────────────────────────────────── */
   function formatDuration(secs) {
     if (!secs) return '';
     const m = Math.floor(secs / 60);
@@ -505,20 +495,24 @@
     if (id) document.getElementById(id).classList.remove('hidden');
   }
 
-  /* ── 3-second countdown (maximises ad dwell time) ──────────── */
+  /* 3-second countdown — maximises ad dwell time during loading */
   function countdown(seconds) {
     return new Promise(resolve => {
       let t = seconds;
       countdownTxt.textContent = `Please wait ${t}s…`;
       const iv = setInterval(() => {
         t -= 1;
-        if (t <= 0) { clearInterval(iv); countdownTxt.textContent = 'Almost there!'; resolve(); }
-        else        { countdownTxt.textContent = `Please wait ${t}s…`; }
+        if (t <= 0) {
+          clearInterval(iv);
+          countdownTxt.textContent = 'Almost there!';
+          resolve();
+        } else {
+          countdownTxt.textContent = `Please wait ${t}s…`;
+        }
       }, 1000);
     });
   }
 
-  /* ── Main handler ──────────────────────────────────────────── */
   async function handleGrab() {
     const url = urlInput.value.trim();
     if (!url) { urlInput.focus(); return; }
@@ -527,7 +521,6 @@
     downloadBtn.disabled = true;
     btnLabel.textContent  = 'Processing…';
 
-    /* 3-second delay — ad impressions window */
     await countdown(3);
 
     try {
@@ -543,28 +536,24 @@
         throw new Error(data.error || 'Could not process this video. Please check the link and try again.');
       }
 
-      document.getElementById('thumbnail').src              = data.thumbnail || '';
-      document.getElementById('videoTitle').textContent     = data.title     || 'Video';
-      document.getElementById('videoDuration').textContent  = formatDuration(data.duration);
-      document.getElementById('downloadLink').href          = data.downloadUrl;
+      document.getElementById('thumbnail').src             = data.thumbnail || '';
+      document.getElementById('videoTitle').textContent    = data.title     || 'Video';
+      document.getElementById('videoDuration').textContent = formatDuration(data.duration);
+      document.getElementById('downloadLink').href         = data.downloadUrl;
       showState('resultState');
 
     } catch (err) {
       document.getElementById('errorMessage').textContent =
         err.message || 'An unexpected error occurred. Please try again.';
       showState('errorState');
-
     } finally {
       downloadBtn.disabled = false;
       btnLabel.textContent  = 'Grab Video';
     }
   }
 
-  /* ── Events ────────────────────────────────────────────────── */
   downloadBtn.addEventListener('click', handleGrab);
   urlInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleGrab(); });
-
-  /* Auto-grab on paste */
   urlInput.addEventListener('paste', () => {
     setTimeout(() => { if (urlInput.value.trim()) handleGrab(); }, 120);
   });

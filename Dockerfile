@@ -1,37 +1,26 @@
-# ═══════════════════════════════════════════════════════════════════════════
-#  GrabbVideos — Dockerfile (EasyPanel / Coolify optimised)
-#  Base: node:18-slim  |  Includes: python3, ffmpeg, yt-dlp (official binary)
-# ═══════════════════════════════════════════════════════════════════════════
-
 FROM node:18-slim
 
-# ── System dependencies ─────────────────────────────────────────────────────
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+# Instala dependências de sistema + yt-dlp num único RUN (melhor cache)
+RUN apt-get update && apt-get install -y \
         python3 \
         ffmpeg \
         curl \
-        ca-certificates && \
-    rm -rf /var/lib/apt/lists/* && \
-    ln -s /usr/bin/python3 /usr/bin/python
+    && curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp \
+        -o /usr/local/bin/yt-dlp \
+    && chmod a+rx /usr/local/bin/yt-dlp \
+    && ln -s /usr/bin/python3 /usr/bin/python \
+    && rm -rf /var/lib/apt/lists/*
 
-# ── yt-dlp binary ───────────────────────────────────────────────────────────
-RUN curl -fsSL \
-        "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp" \
-        -o /usr/local/bin/yt-dlp && \
-    chmod a+rx /usr/local/bin/yt-dlp
-
-# ── App ─────────────────────────────────────────────────────────────────────
 WORKDIR /app
 
 COPY package*.json ./
 RUN npm install --production
 
-COPY server.js ./
-COPY public/ ./public/
+COPY . .
 
-# ── Environment ─────────────────────────────────────────────────────────────
-ENV NODE_ENV=production \
+# Garante que o PATH inclui o binário do yt-dlp
+ENV PATH="/usr/local/bin:${PATH}" \
+    NODE_ENV=production \
     PORT=3000 \
     XDG_CACHE_HOME=/tmp
 

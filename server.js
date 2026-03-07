@@ -1,32 +1,32 @@
-/**
- * GrabbVideos — Backend
- * Node.js + Express + yt-dlp-exec
- *
- * ─── Installing yt-dlp on Linux (Ubuntu) ──────────────────────────────────
- *   sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp \
- *        -o /usr/local/bin/yt-dlp
- *   sudo chmod a+rx /usr/local/bin/yt-dlp
- *   yt-dlp --version            # verify
- *
- *   sudo apt install ffmpeg -y  # needed for some audio/video merge cases
- * ──────────────────────────────────────────────────────────────────────────
- */
-
 'use strict';
 
 const express   = require('express');
 const cors      = require('cors');
 const path      = require('path');
 const { spawn } = require('child_process');
-const ytDlpExec = require('yt-dlp-exec');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
+/* ── yt-dlp binary path ─────────────────────────────────────────────────── */
+/* Always use the explicit path installed by Dockerfile curl step.           */
+const YT_DLP = process.env.YT_DLP_PATH || '/usr/local/bin/yt-dlp';
+
+/* ── Common yt-dlp flags (anti-block) ──────────────────────────────────── */
+const BASE_ARGS = [
+  '--no-warnings',
+  '--no-check-certificates',
+  '--no-cache-dir',
+  '--user-agent',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+  '--add-header', 'Accept-Language:en-US,en;q=0.9',
+  '--add-header', 'Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+];
+
 /* ── Middleware ─────────────────────────────────────────────────────────── */
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));   // serves /public
+app.use(express.static(path.join(__dirname, 'public')));
 
 /* ── Allowed hosts ──────────────────────────────────────────────────────── */
 const ALLOWED_HOSTS = [
@@ -57,8 +57,49 @@ function detectPlatform(rawUrl) {
   return null;
 }
 
+/* ── Helper: run yt-dlp and collect stdout as string ───────────────────── */
+function ytDlpJson(url) {
+  return new Promise((resolve, reject) => {
+    const args = [
+      ...BASE_ARGS,
+      '--dump-single-json',
+      '--format', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
+      url,
+    ];
+
+    console.log(`[yt-dlp] ${YT_DLP} ${args.join(' ')}`);
+
+    const proc = spawn(YT_DLP, args, { stdio: ['ignore', 'pipe', 'pipe'] });
+    let stdout = '';
+    let stderr = '';
+
+    proc.stdout.on('data', (d) => { stdout += d.toString(); });
+    proc.stderr.on('data', (d) => {
+      stderr += d.toString();
+      console.error('[yt-dlp stderr]', d.toString().trim());
+    });
+
+    proc.on('error', (err) => {
+      console.error('[yt-dlp spawn error]', err.message);
+      reject(new Error(`yt-dlp spawn failed: ${err.message}`));
+    });
+
+    proc.on('close', (code) => {
+      if (code !== 0) {
+        console.error(`[yt-dlp] exited with code ${code}. stderr: ${stderr.slice(0, 500)}`);
+        reject(new Error(`yt-dlp exited with code ${code}`));
+        return;
+      }
+      try {
+        resolve(JSON.parse(stdout));
+      } catch (e) {
+        reject(new Error('Failed to parse yt-dlp JSON output'));
+      }
+    });
+  });
+}
+
 /* ── POST /api/info ─────────────────────────────────────────────────────── */
-/*  Validates the URL and extracts video metadata using yt-dlp-exec.         */
 app.post('/api/info', async (req, res) => {
   const { url } = req.body || {};
 
@@ -75,100 +116,65 @@ app.post('/api/info', async (req, res) => {
   }
 
   try {
-    const info = await ytDlpExec(trimmed, {
-      dumpSingleJson:  true,
-      noWarnings:      true,
-      noCallHome:      true,
-      noCheckCertificates: true,
-      impersonate:     'chrome',   // bypass basic bot-detection blocks
-      format: 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
-    });
-
-    const title     = info.title     || 'video';
-    const thumbnail = info.thumbnail || '';
-    const duration  = info.duration  || 0;
-    const platform  = detectPlatform(trimmed);
+    const info = await ytDlpJson(trimmed);
 
     return res.json({
       success:     true,
-      title,
-      thumbnail,
-      duration,
-      platform,
+      title:       info.title       || 'video',
+      thumbnail:   info.thumbnail   || '',
+      duration:    info.duration    || 0,
+      platform:    detectPlatform(trimmed),
       downloadUrl: `/api/download?url=${encodeURIComponent(trimmed)}`,
     });
   } catch (err) {
-    console.error('[/api/info error]', err.message || err);
+    console.error('[/api/info error]', err.message);
     return res.status(500).json({
-      error:
-        'Could not grab this video. Make sure the URL is valid and the content is public.',
+      error: 'Could not grab this video. Make sure the URL is valid and the content is public.',
     });
   }
 });
 
 /* ── GET /api/download ──────────────────────────────────────────────────── */
-/*  Streams the video file directly to the client via yt-dlp stdout pipe.    */
 app.get('/api/download', (req, res) => {
   const { url } = req.query;
 
-  if (!url) {
-    return res.status(400).send('Missing url parameter.');
-  }
+  if (!url) return res.status(400).send('Missing url parameter.');
 
   const decoded = decodeURIComponent(url);
 
-  if (!isAllowedUrl(decoded)) {
-    return res.status(400).send('Invalid URL.');
-  }
+  if (!isAllowedUrl(decoded)) return res.status(400).send('Invalid URL.');
 
   res.setHeader('Content-Type', 'video/mp4');
   res.setHeader('Content-Disposition', 'attachment; filename="grabbvideos.mp4"');
 
-  /*
-   * yt-dlp flags:
-   *   --no-warnings         suppress non-fatal warnings
-   *   --no-check-certificates  avoid SSL issues in containers
-   *   --impersonate chrome  mimic a real Chrome browser request (anti-block)
-   *   --no-cache-dir        safe for containerised / read-only environments
-   *   --format              prefer a ready-merged MP4 (no ffmpeg merge needed)
-   *   --output  -           write video to stdout so we can pipe it to Express
-   */
   const args = [
-    '--no-warnings',
-    '--no-check-certificates',
-    '--impersonate', 'chrome',
-    '--no-cache-dir',
+    ...BASE_ARGS,
     '--format', 'best[ext=mp4]/best',
     '--output', '-',
     decoded,
   ];
 
-  const ytDlpProcess = spawn('yt-dlp', args, {
-    stdio: ['ignore', 'pipe', 'pipe'],
+  const proc = spawn(YT_DLP, args, { stdio: ['ignore', 'pipe', 'pipe'] });
+
+  proc.stdout.pipe(res);
+
+  proc.stderr.on('data', (chunk) => {
+    console.error('[yt-dlp download stderr]', chunk.toString().trim());
   });
 
-  ytDlpProcess.stdout.pipe(res);
-
-  ytDlpProcess.stderr.on('data', (chunk) => {
-    console.error('[yt-dlp stderr]', chunk.toString().trim());
+  proc.on('error', (err) => {
+    console.error('[yt-dlp download spawn error]', err.message);
+    if (!res.headersSent) res.status(500).end('Could not start download.');
   });
 
-  ytDlpProcess.on('error', (err) => {
-    console.error('[yt-dlp spawn error]', err.message);
-    if (!res.headersSent) {
-      res.status(500).end('Internal server error: could not start download.');
-    }
-  });
-
-  ytDlpProcess.on('close', (code) => {
+  proc.on('close', (code) => {
     if (code !== 0 && !res.headersSent) {
-      res.status(500).end('yt-dlp exited with an error.');
+      res.status(500).end('Download failed.');
     }
   });
 
-  // Kill the child process if the client disconnects early
   req.on('close', () => {
-    if (!ytDlpProcess.killed) ytDlpProcess.kill('SIGKILL');
+    if (!proc.killed) proc.kill('SIGKILL');
   });
 });
 
@@ -179,5 +185,6 @@ app.get('*', (_req, res) => {
 
 /* ── Start ──────────────────────────────────────────────────────────────── */
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n🚀  GrabbVideos running on port ${PORT}\n`);
+  console.log(`\n🚀  GrabbVideos running on port ${PORT}`);
+  console.log(`    yt-dlp binary: ${YT_DLP}\n`);
 });

@@ -42,9 +42,9 @@ WORKDIR /app
 
 # ── Install Node dependencies ────────────────────────────────────────────────
 #   Copy package files first to leverage Docker layer caching.
-#   npm ci --omit=dev  → production-only, reproducible install (uses lockfile)
+#   npm install --production  → installs only production dependencies
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --production
 
 # ── Copy application source ──────────────────────────────────────────────────
 COPY server.js   ./

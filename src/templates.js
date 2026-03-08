@@ -11,7 +11,6 @@ const BANNER_SRC = 'https://www.highperformanceformat.com/bdaf2212efd1c570eb9274
 const MOBILE_KEY = '3660345d7ec8fd060c0beee5d3e4928f';
 const MOBILE_SRC = 'https://www.highperformanceformat.com/3660345d7ec8fd060c0beee5d3e4928f/invoke.js';
 const SOCIAL_SRC = 'https://pl28866350.effectivegatecpm.com/07/21/32/0721323b213d354fd931d51a9c5646cb.js';
-const POPUNDER_SRC = 'https://pl28866286.effectivegatecpm.com/03/d2/e2/03d2e2d61f7507bbd6093e225204c195.js';
 const SITE = 'https://grabbvideos.com';
 
 /* ── Shared CSS (written once, injected in every page) ─────────────── */
@@ -280,7 +279,6 @@ function renderStickyAndScripts(extraJs = '') {
 </div>
 
 <script async src="${SOCIAL_SRC}"></script>
-<script async src="${POPUNDER_SRC}"></script>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();

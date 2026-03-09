@@ -225,25 +225,40 @@ if (pages && pages.blogs) {
 
 /* ── i18n home pages ─────────────────────────────────────────────────────── */
 // Rota para as páginas de tradução (/pt, /es, /de, etc)
+app.get('/', (req, res) => {
+    if (pages && pages.i18n && pages.i18n.en) {
+        res.render('index', { 
+            page: pages.i18n.en, 
+            currentLang: 'en',
+            SITE: SITE 
+        });
+    } else {
+        res.status(500).send("Erro: Tradução 'en' não encontrada no pages.js");
+    }
+});
+
+// Garanta que a rota raiz (/) continue funcionando
 if (pages && pages.i18n) {
   Object.entries(pages.i18n).forEach(([slug, langData]) => {
-    app.get(`/${slug}`, (req, res) => {
-      res.render('index', { 
-        page: langData, 
-        currentLang: slug,
-        SITE: SITE 
+      app.get(`/${slug}`, (req, res) => {
+          res.render('index', { 
+              page: langData, 
+              currentLang: slug,
+              SITE: SITE 
+          });
       });
-    });
   });
 }
 
-// Garanta que a rota raiz (/) continue funcionando
-app.get('/', (req, res) => {
-  res.render('index', { 
-    page: PAGES.i18n.en, // Ou a língua que você quer como padrão
-    currentLang: 'en',
-    SITE: SITE 
-  });
+// Rota de erro 404
+app.use((req, res) => {
+  res.status(404).render('404', { SITE: SITE });
+});
+
+// Iniciar o servidor
+const PORT = process.env.PORT || 80;
+app.listen(PORT, () => {
+  console.log(`🚀 GrabbVideos rodando na porta ${PORT}`);
 });
 
 /* ── SPA fallback ───────────────────────────────────────────────────────── */

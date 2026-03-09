@@ -211,42 +211,31 @@ app.get('/blog', (_req, res) => {
 });
 
 /* ── Blog posts ──────────────────────────────────────────────────────────── */
-if (pages && pages.blogs) {
-  Object.entries(pages.blogs).forEach(([slug, page]) => {
-    app.get(`/blog/${slug}`, (req, res) => {
-      res.render('blog-post', { 
-        page: page, 
-        SITE: SITE,
-        currentLang: 'en' 
-      });
+Object.entries(pages.blogs).forEach(([slug, page]) => {
+  app.get(`/blog/${slug}`, (_req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.send(renderPage(page));
+  });
+});
+
+/* ── i18n home pages ─────────────────────────────────────────────────────── */
+/* ── Rotas de Idiomas (i18n) ────────────────────────────────────────────── */
+if (pages && pages.i18n) {
+  Object.entries(pages.i18n).forEach(([slug, langData]) => {
+    app.get(`/${slug}`, (req, res) => {
+      // Como o seu sistema usa SPA fallback ou templates, vamos garantir que ele envie o index
+      res.sendFile(path.join(__dirname, 'public', 'index.html'));
     });
   });
 }
 
-/* ── i18n home pages ─────────────────────────────────────────────────────── */
-// Rota para as páginas de tradução (/pt, /es, /de, etc)
-Object.entries(PAGES.i18n).forEach(([slug, langData]) => {
-  app.get(`/${slug}`, (req, res) => {
-    // Aqui ele renderiza a sua index usando os dados da língua específica
-    res.render('index', { 
-      page: langData, 
-      currentLang: slug,
-      SITE: SITE 
-    });
-  });
-});
-
-// Garanta que a rota raiz (/) continue funcionando
+/* ── Rota Raiz (/) ──────────────────────────────────────────────────────── */
 app.get('/', (req, res) => {
-  res.render('index', { 
-    page: PAGES.i18n.en, // Ou a língua que você quer como padrão
-    currentLang: 'en',
-    SITE: SITE 
-  });
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-/* ── SPA fallback ───────────────────────────────────────────────────────── */
-app.get('*', (_req, res) => {
+/* ── SPA fallback (404 e outras rotas) ──────────────────────────────────── */
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 

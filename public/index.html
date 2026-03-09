@@ -706,5 +706,26 @@
   });
 </script>
 
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. Pega o slug da URL (ex: /pt)
+    const slug = window.location.pathname.replace('/', '');
+    
+    // 2. Verifica se existem dados para esse idioma no seu pages.js
+    if (typeof PAGES !== 'undefined' && PAGES.i18n && PAGES.i18n[slug]) {
+      const data = PAGES.i18n[slug];
+      
+      // 3. Substitui os textos principais (certifique-se de que os IDs batem com seu HTML)
+      if (data.h1) document.querySelector('h1').innerText = data.h1;
+      if (data.subtitle) document.querySelector('#subtitle').innerText = data.subtitle;
+      if (data.placeholder) document.querySelector('#url-input').placeholder = data.placeholder;
+      if (data.btnLabel) document.querySelector('#btn-grab').innerText = data.btnLabel;
+      
+      // Atualiza o Título da Aba e Meta Description
+      document.title = data.title;
+      document.querySelector('meta[name="description"]').setAttribute('content', data.description);
+    }
+  });
+</script>
 </body>
 </html>

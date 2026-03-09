@@ -18,13 +18,6 @@ function adBanner728() {
   </div>`;
 }
 
-function adNative(id) {
-  return `
-  <div class="my-6 rec-box">
-    <div class="rec-header">Recommended Content</div>
-    <div class="p-3"><div id="${id}"></div></div>
-  </div>`;
-}
 
 /* ══════════════════════════════════════════════════════════════════════
    BLOG CONTENT
@@ -424,39 +417,113 @@ module.exports = {
       type: 'i18n',
       slug: 'pt',
       canonical: `${SITE}/pt`,
-      title: 'Baixar Reels e Vídeos do Instagram e TikTok Grátis | GrabbVideos',
-      description: 'Baixe Reels, Stories e vídeos do Instagram e TikTok em MP4 HD — sem marca d\'água, sem cadastro. Rápido, 100% gratuito.',
-      h1: 'Baixe Qualquer Vídeo Sem Marca d\'Água.',
-      subtitle: 'Instagram Reels, Stories e vídeos do TikTok em MP4 HD — sem conta, sem app, grátis.',
+      title: 'Baixar Vídeos do Instagram e TikTok Sem Marca d\'Água Grátis | GrabbVideos',
+      description: 'Baixe Reels, Stories e vídeos do Instagram e TikTok em MP4 HD sem marca d\'água e sem cadastro. Ferramenta 100% gratuita, segura e que funciona no celular e computador.',
+      h1: 'Baixe Vídeos do Instagram e TikTok Sem Marca d\'Água',
+      subtitle: 'Salve Reels, Stories e vídeos do TikTok em MP4 HD direto no seu dispositivo — sem conta, sem app, 100% gratuito.',
       ogImage: `${SITE}/og-image.png`,
       btnLabel: 'Baixar Vídeo',
-      placeholder: 'Cole o link do Instagram ou TikTok aqui…',
+      placeholder: 'Cole aqui o link do Instagram ou TikTok…',
       processing: 'Processando…',
       grabbing: 'Baixando seu vídeo…',
       videoReady: '✓ Vídeo pronto',
-      downloadBtn: 'Download MP4',
-      howToTitle: 'Como Baixar Vídeos do Instagram',
+      downloadBtn: 'Baixar MP4',
+      howToTitle: 'Como Baixar Vídeos do Instagram e TikTok',
       toolCardTitle: 'Cole o link do vídeo abaixo',
       toolCardSubtitle: 'Instagram Reels · Stories · Posts · TikTok',
       steps: [
-        { title: 'Abra o vídeo no Instagram', desc: 'Vá ao Reel, Post ou Story no app ou no navegador.' },
-        { title: 'Copie o link', desc: 'Toque em ··· → Copiar Link. No computador, copie a URL da barra de endereços.' },
-        { title: 'Cole e clique em Baixar Vídeo', desc: 'Cole o link acima e pressione o botão. O processamento leva alguns segundos.' },
-        { title: 'Clique em Download MP4', desc: 'O vídeo HD é salvo no dispositivo — sem marca d\'água, sem login.' },
+        {
+          title: 'Abra o vídeo no Instagram ou TikTok',
+          desc: 'No aplicativo ou pelo navegador do celular, navegue até o Reel, Post, Story ou vídeo do TikTok que deseja salvar. O conteúdo precisa ser de um perfil público para que o download funcione.',
+        },
+        {
+          title: 'Copie o link do vídeo',
+          desc: 'No Instagram, toque nos três pontos (···) e selecione "Copiar Link". No TikTok, toque em "Compartilhar" e depois em "Copiar Link". No computador, basta copiar a URL diretamente da barra de endereços do navegador.',
+        },
+        {
+          title: 'Cole o link e clique em "Baixar Vídeo"',
+          desc: 'Acesse o GrabbVideos, cole o link copiado no campo de texto e pressione o botão "Baixar Vídeo". O sistema irá processar a solicitação em poucos segundos, identificando automaticamente a plataforma e a melhor qualidade disponível.',
+        },
+        {
+          title: 'Salve o MP4 no seu dispositivo',
+          desc: 'Quando o vídeo estiver pronto, clique em "Baixar MP4". O arquivo será salvo diretamente no seu celular ou computador em alta definição, sem marca d\'água e sem necessidade de login ou cadastro.',
+        },
       ],
       features: [
-        { title: 'Ultra Rápido', desc: 'Vídeo pronto em segundos, sem filas.' },
-        { title: 'Sem Marca d\'Água', desc: 'MP4 limpo sem logotipo do TikTok ou Instagram.' },
-        { title: 'Sem Cadastro', desc: 'Sem contas ou formulários — só cole e pronto.' },
-        { title: 'Mobile-Friendly', desc: 'Funciona no iPhone, Android e no desktop.' },
-        { title: 'Qualidade HD', desc: 'Resolução máxima disponível — até 1080p MP4.' },
-        { title: '100% Privado', desc: 'Nunca armazenamos seus links ou conteúdos.' },
+        {
+          title: 'Download Ultra Rápido',
+          desc: 'O GrabbVideos processa seu pedido em segundos, sem filas de espera ou tempo de carregamento desnecessário. Nossa infraestrutura é otimizada para entregar o link de download o mais rápido possível, independente do tamanho do vídeo.',
+        },
+        {
+          title: 'Sem Marca d\'Água',
+          desc: 'Ao contrário do download padrão do TikTok, o GrabbVideos acessa a fonte original do vídeo, entregando um arquivo MP4 completamente limpo, sem nenhum logotipo ou marca d\'água sobreposto. O que você baixa é exatamente o que o criador publicou.',
+        },
+        {
+          title: 'Sem Cadastro Necessário',
+          desc: 'Não pedimos e-mail, senha ou qualquer dado pessoal. Basta colar o link e clicar em baixar — sem formulários, sem confirmação de conta, sem etapas desnecessárias. O processo inteiro leva menos de 30 segundos.',
+        },
+        {
+          title: 'Funciona no iPhone e Android',
+          desc: 'O GrabbVideos foi desenvolvido para funcionar perfeitamente em qualquer navegador móvel, incluindo Safari no iPhone e Chrome no Android. Não é necessário instalar nenhum aplicativo ou extensão — tudo acontece direto no browser.',
+        },
+        {
+          title: 'Qualidade HD até 1080p',
+          desc: 'Sempre selecionamos a resolução mais alta disponível para o vídeo solicitado, podendo chegar a 1080p Full HD. O arquivo entregue é um MP4 compatível com todos os dispositivos modernos, pronto para ser assistido offline ou editado.',
+        },
+        {
+          title: '100% Seguro e Privado',
+          desc: 'Nenhum link ou vídeo é armazenado em nossos servidores após o processamento. Todas as solicitações são tratadas em tempo real e descartadas imediatamente. Sua privacidade é nossa prioridade — consulte nossa Política de Privacidade para mais detalhes.',
+        },
       ],
       faq: [
-        { q: 'O GrabbVideos é gratuito?', a: 'Sim — 100% gratuito, sem limites, sem conta.' },
-        { q: 'Remove a marca d\'água do TikTok?', a: 'Sim. O GrabbVideos busca o vídeo original diretamente — sem marcas de água.' },
-        { q: 'Funciona no iPhone?', a: 'Sim. Abra o Safari, cole o link e toque em Baixar Vídeo.' },
-        { q: 'E no Android?', a: 'Sim. Use o Chrome, cole o link e toque em Baixar Vídeo. O MP4 vai para Downloads.' },
+        {
+          q: 'O GrabbVideos é realmente gratuito?',
+          a: 'Sim, o GrabbVideos é 100% gratuito e sem limites de uso. Você pode baixar quantos vídeos quiser, sem assinar nenhum plano pago, sem cadastro e sem anúncios intrusivos. A ferramenta se mantém gratuita graças a pequenos anúncios discretos exibidos na página.',
+        },
+        {
+          q: 'Como baixar vídeo do TikTok sem marca d\'água?',
+          a: 'Basta copiar o link do vídeo no TikTok (toque em "Compartilhar" → "Copiar Link"), colar no GrabbVideos e clicar em "Baixar Vídeo". O GrabbVideos acessa diretamente a versão original do arquivo, que não possui a marca d\'água do TikTok, e entrega um MP4 limpo para você salvar.',
+        },
+        {
+          q: 'Como baixar vídeos do Instagram no iPhone?',
+          a: 'No iPhone, abra o Instagram e navegue até o vídeo ou Reel desejado. Toque nos três pontos (···) e selecione "Copiar Link". Em seguida, abra o Safari e acesse grabbvideos.com. Cole o link no campo indicado e toque em "Baixar Vídeo". Quando o download estiver pronto, toque em "Baixar MP4" e o vídeo será salvo nos arquivos do seu iPhone.',
+        },
+        {
+          q: 'Como baixar vídeos do Instagram no Android?',
+          a: 'No Android, copie o link do vídeo tocando em ··· → "Copiar Link" no Instagram, ou em "Compartilhar" → "Copiar Link" no TikTok. Abra o Chrome ou qualquer navegador e acesse grabbvideos.com. Cole o link e toque em "Baixar Vídeo". O arquivo MP4 será baixado automaticamente para a pasta "Downloads" do seu dispositivo.',
+        },
+        {
+          q: 'É legal baixar vídeos do Instagram e TikTok?',
+          a: 'Baixar vídeos para uso pessoal e offline é geralmente tolerado na maioria dos países, especialmente quando o conteúdo é de perfis públicos. No entanto, redistribuir, republicar ou usar comercialmente vídeos sem autorização do criador pode infringir direitos autorais. O GrabbVideos recomenda que os downloads sejam usados apenas para consumo pessoal, offline, e que você sempre respeite os créditos dos criadores de conteúdo.',
+        },
+        {
+          q: 'O site GrabbVideos é seguro? Meus dados ficam protegidos?',
+          a: 'Sim. O GrabbVideos não solicita nenhum dado pessoal e não armazena os links enviados após o processamento. Todo o processo é feito em tempo real: o link é recebido, o vídeo é localizado e o MP4 é entregue — sem guardar histórico. O site utiliza conexão HTTPS criptografada e não instala cookies de rastreamento além dos necessários para análise de tráfego anônima.',
+        },
+        {
+          q: 'Preciso criar uma conta ou fazer cadastro?',
+          a: 'Não. O GrabbVideos foi criado justamente para eliminar essa fricção. Não há cadastro, login, verificação de e-mail ou qualquer tipo de conta. Você acessa o site, cola o link e baixa o vídeo — simples assim. Nunca pediremos suas informações pessoais.',
+        },
+        {
+          q: 'Qual é a qualidade do vídeo que vou receber?',
+          a: 'O GrabbVideos sempre seleciona automaticamente a melhor qualidade disponível para cada vídeo, que pode chegar a Full HD (1080p). A qualidade final depende do que foi originalmente publicado pelo criador na plataforma — se o upload original foi em 720p, o download também será em 720p. O formato entregue é sempre MP4, compatível com todos os dispositivos.',
+        },
+        {
+          q: 'Posso baixar vídeos de contas privadas?',
+          a: 'Não. O GrabbVideos só consegue acessar conteúdos de perfis públicos, pois não realiza autenticação em nenhuma conta. Vídeos de perfis privados são protegidos pelas plataformas e não podem ser acessados por ferramentas de terceiros sem login, o que preserva a privacidade dos usuários.',
+        },
+        {
+          q: 'Por que aparece o erro "Não foi possível baixar este vídeo"?',
+          a: 'As causas mais comuns são: o perfil é privado, o vídeo foi apagado pelo criador, o link está incompleto ou o conteúdo é um Story que já expirou. Para evitar esse problema, certifique-se de copiar o link diretamente pelo botão "Compartilhar" → "Copiar Link" dentro do aplicativo, e não digitando a URL manualmente. Se o problema persistir, tente novamente em alguns minutos.',
+        },
+        {
+          q: 'Funciona no computador (Windows e Mac)?',
+          a: 'Sim. O GrabbVideos funciona em qualquer navegador moderno no computador, incluindo Google Chrome, Mozilla Firefox, Microsoft Edge e Safari no Mac. Basta acessar grabbvideos.com, copiar o link do vídeo da barra de endereços do Instagram ou TikTok, colar no campo e clicar em "Baixar Vídeo".',
+        },
+        {
+          q: 'Quanto tempo leva para baixar um vídeo?',
+          a: 'O processamento geralmente leva entre 2 e 5 segundos. Vídeos mais longos ou de maior resolução podem levar um pouco mais. Após clicar em "Baixar Vídeo", uma barra de progresso indicará o status em tempo real. O download do arquivo para o seu dispositivo depende também da velocidade da sua conexão com a internet.',
+        },
       ],
     },
 

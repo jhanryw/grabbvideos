@@ -708,37 +708,193 @@
 
 <script src="/pages.js"></script>
 <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    // 1. Pega a língua da URL (ex: /pt)
-    const slug = window.location.pathname.replace(/\//g, '');
-    
-    // 2. Verifica se a língua existe no pages.js
-    if (typeof PAGES !== 'undefined' && PAGES.i18n && PAGES.i18n[slug]) {
-      const data = PAGES.i18n[slug];
-      
-      // 3. Substitui os textos (Usando os IDs exatos do seu HTML)
-      if (data.h1) {
-        const h1 = document.querySelector('h1');
-        if (h1) h1.innerText = data.h1;
-      }
-      if (data.subtitle) {
-        const sub = document.getElementById('subtitle');
-        if (sub) sub.innerText = data.subtitle;
-      }
-      if (data.placeholder) {
-        const input = document.getElementById('urlInput');
-        if (input) input.placeholder = data.placeholder;
-      }
-      if (data.btnLabel) {
-        const btnText = document.getElementById('btnLabel');
-        if (btnText) btnText.innerText = data.btnLabel;
-      }
-      
-      // 4. Atualiza o SEO (Título e Descrição)
-      document.title = data.title;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute('content', data.description);
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const urlInput     = document.getElementById('urlInput');
+  const downloadBtn  = document.getElementById('downloadBtn');
+  const btnLabel     = document.getElementById('btnLabel');
+  const countdownTxt = document.getElementById('countdownText');
+
+  // Variáveis globais de tradução (Padrão: Inglês)
+  let t_processing = 'Processing…';
+  let t_wait       = 'Please wait';
+  let t_almost     = 'Almost there!';
+  let t_error      = 'Could not process this video. Please check the link and try again.';
+  let t_errorTitle = 'Could not grab this video';
+  const slug       = window.location.pathname.replace(/\//g, '');
+
+  // ==========================================
+  // LÓGICA DE TRADUÇÃO DA PÁGINA INTEIRA
+  // ==========================================
+  if (typeof PAGES !== 'undefined' && PAGES.i18n && PAGES.i18n[slug]) {
+    const data = PAGES.i18n[slug];
+
+    // 1. Textos do Topo e SEO
+    if (data.h1) document.querySelector('h1').innerText = data.h1;
+    if (data.subtitle) {
+      const sub = document.getElementById('subtitle');
+      if (sub) sub.innerText = data.subtitle;
     }
+    if (data.placeholder) urlInput.placeholder = data.placeholder;
+    if (data.btnLabel) btnLabel.innerText = data.btnLabel;
+    document.title = data.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', data.description);
+
+    // Atualiza textos de Loading e Erro
+    if (data.processing) t_processing = data.processing;
+    if (slug === 'pt') { t_wait = 'Aguarde'; t_almost = 'Quase lá!'; t_error = 'Não foi possível baixar este vídeo.'; t_errorTitle = 'Erro ao baixar'; }
+    if (slug === 'es') { t_wait = 'Por favor espera'; t_almost = '¡Ya casi!'; t_error = 'No se pudo procesar este vídeo.'; t_errorTitle = 'Error al descargar'; }
+
+    // Atualiza os blocos de Status (Sucesso / Loading)
+    const loadingTitle = document.querySelector('#loadingState p.text-gray-900.font-semibold');
+    if (loadingTitle && data.grabbing) loadingTitle.innerText = data.grabbing;
+
+    const successTitle = document.querySelector('#resultState p.text-emerald-600');
+    if (successTitle && data.videoReady) successTitle.innerText = data.videoReady;
+
+    const downloadLink = document.getElementById('downloadLink');
+    if (downloadLink && data.downloadBtn) {
+       downloadLink.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> ${data.downloadBtn}`;
+    }
+
+    // Identifica os 5 blocos (Cards) do site
+    const cards = document.querySelectorAll('.card');
+
+    // Card 0: Formulário
+    if (cards[0]) {
+       if (data.toolCardTitle) cards[0].querySelector('h2').innerText = data.toolCardTitle;
+       if (data.toolCardSubtitle) cards[0].querySelector('p.text-xs').innerText = data.toolCardSubtitle;
+    }
+
+    // Card 1: Features (Funcionalidades)
+    if (cards[1] && data.features) {
+       const fTitles = cards[1].querySelectorAll('p.font-semibold');
+       const fDescs  = cards[1].querySelectorAll('p.text-xs');
+       data.features.forEach((feat, index) => {
+          if (fTitles[index]) fTitles[index].innerText = feat.title;
+          if (fDescs[index]) fDescs[index].innerText = feat.desc;
+       });
+       // Tradução manual do título e subtítulo da seção de features
+       const fMainTitle = cards[1].querySelector('h2');
+       const fMainSub = cards[1].querySelector('p.text-center.mb-6');
+       if (slug === 'pt') {
+           if(fMainTitle) fMainTitle.innerText = 'Por que escolher o GrabbVideos?';
+           if(fMainSub) fMainSub.innerText = 'A forma mais rápida e limpa de salvar vídeos sociais — sem marca d\'água, sem complicações.';
+       }
+       if (slug === 'es') {
+           if(fMainTitle) fMainTitle.innerText = '¿Por qué elegir GrabbVideos?';
+           if(fMainSub) fMainSub.innerText = 'La forma más rápida y limpia de guardar vídeos sociales — sin marca de agua, sin complicaciones.';
+       }
+    }
+
+    // Card 2: Tutorial Unificado (No pages.js o passo a passo já serve para IG e TikTok juntos)
+    if (cards[2] && data.steps) {
+       if (data.howToTitle) cards[2].querySelector('h2').innerText = data.howToTitle;
+       const sTitles = cards[2].querySelectorAll('p.font-semibold');
+       const sDescs  = cards[2].querySelectorAll('p.text-xs');
+       data.steps.forEach((step, index) => {
+          if (sTitles[index]) sTitles[index].innerText = step.title;
+          if (sDescs[index])  sDescs[index].innerText = step.desc;
+       });
+    }
+
+    // Card 3: Tutorial do TikTok (Esconde, pois o Card 2 agora engloba tudo)
+    if (cards[3]) {
+       cards[3].style.display = 'none'; 
+    }
+
+    // Card 4: FAQ (Apaga os itens em inglês e reconstrói na língua certa)
+    if (cards[4] && data.faq) {
+       const faqTitle = cards[4].querySelector('h2');
+       if (slug === 'pt' && faqTitle) faqTitle.innerText = 'Perguntas Frequentes';
+       if (slug === 'es' && faqTitle) faqTitle.innerText = 'Preguntas Frecuentes';
+       
+       const faqContainer = cards[4].querySelector('div');
+       if (faqContainer) {
+           faqContainer.innerHTML = ''; // Limpa o inglês
+           data.faq.forEach((item, idx) => {
+              faqContainer.innerHTML += `
+              <div class="faq-item py-4">
+                <h3 class="font-semibold text-gray-900 text-sm mb-1">${item.q}</h3>
+                <p class="text-[#6b7280] text-xs leading-relaxed">${item.a}</p>
+              </div>`;
+           });
+       }
+    }
+  }
+
+  // ==========================================
+  // LÓGICA DO DOWNLOAD DO VÍDEO
+  // ==========================================
+  function formatDuration(secs) {
+    if (!secs) return '';
+    const m = Math.floor(secs / 60), s = Math.floor(secs % 60);
+    const prefix = slug === 'pt' ? 'Duração' : slug === 'es' ? 'Duración' : 'Duration';
+    return `${prefix}: ${m}:${String(s).padStart(2,'0')}`;
+  }
+
+  function showState(id) {
+    ['loadingState','resultState','errorState'].forEach(n =>
+      document.getElementById(n).classList.add('hidden')
+    );
+    if (id) document.getElementById(id).classList.remove('hidden');
+  }
+
+  function countdown(seconds) {
+    return new Promise(resolve => {
+      let t = seconds;
+      countdownTxt.textContent = `${t_wait} ${t}s…`;
+      const iv = setInterval(() => {
+        t--;
+        if (t <= 0) { clearInterval(iv); countdownTxt.textContent = t_almost; resolve(); }
+        else        { countdownTxt.textContent = `${t_wait} ${t}s…`; }
+      }, 1000);
+    });
+  }
+
+  async function handleGrab() {
+    const url = urlInput.value.trim();
+    if (!url) { urlInput.focus(); return; }
+
+    showState('loadingState');
+    downloadBtn.disabled = true;
+    btnLabel.textContent  = t_processing;
+
+    await countdown(3);
+
+    try {
+      const resp = await fetch('/api/info', {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body   : JSON.stringify({ url }),
+      });
+      const apiData = await resp.json();
+
+      if (!resp.ok || !apiData.success)
+        throw new Error(apiData.error || t_error);
+
+      document.getElementById('thumbnail').src             = apiData.thumbnail || '';
+      document.getElementById('videoTitle').textContent    = apiData.title     || 'Video';
+      document.getElementById('videoDuration').textContent = formatDuration(apiData.duration);
+      document.getElementById('downloadLink').href         = apiData.downloadUrl;
+      showState('resultState');
+
+    } catch (err) {
+      const errTitle = document.querySelector('#errorState p.font-semibold');
+      if (errTitle) errTitle.innerText = t_errorTitle;
+      document.getElementById('errorMessage').textContent = err.message || t_error;
+      showState('errorState');
+    } finally {
+      downloadBtn.disabled = false;
+      const btnData = (typeof PAGES !== 'undefined' && PAGES.i18n && PAGES.i18n[slug]) ? PAGES.i18n[slug].btnLabel : 'Grab Video';
+      btnLabel.textContent = btnData;
+    }
+  }
+
+  downloadBtn.addEventListener('click', handleGrab);
+  urlInput.addEventListener('keydown', e => { if (e.key === 'Enter') handleGrab(); });
+  urlInput.addEventListener('paste', () => {
+    setTimeout(() => { if (urlInput.value.trim()) handleGrab(); }, 120);
   });
 </script>
 </body>

@@ -6,15 +6,14 @@ const path        = require('path');
 const compression = require('compression');
 const { spawn }   = require('child_process');
 const pages       = require('./src/pages');
-const { renderPage, renderBlogIndex } = require('./src/templates');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
-/* ── Gzip compression for all responses ─────────────────────────────────── */
+/* ── Compressão Gzip ────────────────────────────────────────────────────── */
 app.use(compression());
 
-/* ── Explicit routes for sitemap & robots (ensure correct MIME types) ────── */
+/* ── Sitemap & Robots ───────────────────────────────────────────────────── */
 app.get('/sitemap.xml', (_req, res) => {
   res.type('text/xml').sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
 });
@@ -23,11 +22,9 @@ app.get('/robots.txt', (_req, res) => {
   res.type('text/plain').sendFile(path.join(__dirname, 'public', 'robots.txt'));
 });
 
-/* ── yt-dlp binary path ─────────────────────────────────────────────────── */
-/* Always use the explicit path installed by Dockerfile curl step.           */
+/* ── Configuração yt-dlp ────────────────────────────────────────────────── */
 const YT_DLP = process.env.YT_DLP_PATH || '/usr/local/bin/yt-dlp';
 
-/* ── Common yt-dlp flags (anti-block) ──────────────────────────────────── */
 const BASE_ARGS = [
   '--no-warnings',
   '--no-check-certificates',
@@ -46,24 +43,17 @@ app.use(express.static(path.join(__dirname, 'public'), {
   etag:   true,
 }));
 
-/* ── Allowed hosts ──────────────────────────────────────────────────────── */
+/* ── Hosts Permitidos ───────────────────────────────────────────────────── */
 const ALLOWED_HOSTS = [
-  'instagram.com',
-  'www.instagram.com',
-  'tiktok.com',
-  'www.tiktok.com',
-  'vm.tiktok.com',
-  'vt.tiktok.com',
-  'm.tiktok.com',
+  'instagram.com', 'www.instagram.com',
+  'tiktok.com', 'www.tiktok.com', 'vm.tiktok.com', 'vt.tiktok.com', 'm.tiktok.com',
 ];
 
 function isAllowedUrl(rawUrl) {
   try {
     const { hostname } = new URL(rawUrl);
     return ALLOWED_HOSTS.includes(hostname.toLowerCase());
-  } catch {
-    return false;
-  }
+  } catch { return false; }
 }
 
 function detectPlatform(rawUrl) {
@@ -75,7 +65,7 @@ function detectPlatform(rawUrl) {
   return null;
 }
 
-/* ── Helper: run yt-dlp and collect stdout as string ───────────────────── */
+/* ── Helper yt-dlp ──────────────────────────────────────────────────────── */
 function ytDlpJson(url) {
   return new Promise((resolve, reject) => {
     const args = [
@@ -84,163 +74,66 @@ function ytDlpJson(url) {
       '--format', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
       url,
     ];
-
-    console.log(`[yt-dlp] ${YT_DLP} ${args.join(' ')}`);
-
     const proc = spawn(YT_DLP, args, { stdio: ['ignore', 'pipe', 'pipe'] });
     let stdout = '';
-    let stderr = '';
-
     proc.stdout.on('data', (d) => { stdout += d.toString(); });
-    proc.stderr.on('data', (d) => {
-      stderr += d.toString();
-      console.error('[yt-dlp stderr]', d.toString().trim());
-    });
-
-    proc.on('error', (err) => {
-      console.error('[yt-dlp spawn error]', err.message);
-      reject(new Error(`yt-dlp spawn failed: ${err.message}`));
-    });
-
     proc.on('close', (code) => {
-      if (code !== 0) {
-        console.error(`[yt-dlp] exited with code ${code}. stderr: ${stderr.slice(0, 500)}`);
-        reject(new Error(`yt-dlp exited with code ${code}`));
-        return;
-      }
-      try {
-        resolve(JSON.parse(stdout));
-      } catch (e) {
-        reject(new Error('Failed to parse yt-dlp JSON output'));
-      }
+      if (code !== 0) return reject(new Error(`Exit code ${code}`));
+      try { resolve(JSON.parse(stdout)); } catch (e) { reject(e); }
     });
   });
 }
 
-/* ── POST /api/info ─────────────────────────────────────────────────────── */
+/* ── API Endpoints ──────────────────────────────────────────────────────── */
 app.post('/api/info', async (req, res) => {
   const { url } = req.body || {};
-
-  if (!url || typeof url !== 'string') {
-    return res.status(400).json({ error: 'No URL provided.' });
-  }
-
-  const trimmed = url.trim();
-
-  if (!isAllowedUrl(trimmed)) {
-    return res.status(400).json({
-      error: 'Invalid URL. Only Instagram and TikTok links are supported.',
-    });
-  }
+  if (!url || !isAllowedUrl(url)) return res.status(400).json({ error: 'URL inválida.' });
 
   try {
-    const info = await ytDlpJson(trimmed);
-
+    const info = await ytDlpJson(url.trim());
     return res.json({
-      success:     true,
-      title:       info.title       || 'video',
-      thumbnail:   info.thumbnail   || '',
-      duration:    info.duration    || 0,
-      platform:    detectPlatform(trimmed),
-      downloadUrl: `/api/download?url=${encodeURIComponent(trimmed)}`,
+      success: true,
+      title: info.title || 'video',
+      thumbnail: info.thumbnail || '',
+      platform: detectPlatform(url),
+      downloadUrl: `/api/download?url=${encodeURIComponent(url.trim())}`,
     });
   } catch (err) {
-    console.error('[/api/info error]', err.message);
-    return res.status(500).json({
-      error: 'Could not grab this video. Make sure the URL is valid and the content is public.',
-    });
+    return res.status(500).json({ error: 'Erro ao processar vídeo.' });
   }
 });
 
-/* ── GET /api/download ──────────────────────────────────────────────────── */
 app.get('/api/download', (req, res) => {
   const { url } = req.query;
-
-  if (!url) return res.status(400).send('Missing url parameter.');
-
-  const decoded = decodeURIComponent(url);
-
-  if (!isAllowedUrl(decoded)) return res.status(400).send('Invalid URL.');
+  if (!url || !isAllowedUrl(decodeURIComponent(url))) return res.status(400).send('URL inválida.');
 
   res.setHeader('Content-Type', 'video/mp4');
   res.setHeader('Content-Disposition', 'attachment; filename="grabbvideos.mp4"');
 
-  const args = [
-    ...BASE_ARGS,
-    '--format', 'best[ext=mp4]/best',
-    '--output', '-',
-    decoded,
-  ];
-
+  const args = [...BASE_ARGS, '--format', 'best[ext=mp4]/best', '--output', '-', decodeURIComponent(url)];
   const proc = spawn(YT_DLP, args, { stdio: ['ignore', 'pipe', 'pipe'] });
-
   proc.stdout.pipe(res);
-
-  proc.stderr.on('data', (chunk) => {
-    console.error('[yt-dlp download stderr]', chunk.toString().trim());
-  });
-
-  proc.on('error', (err) => {
-    console.error('[yt-dlp download spawn error]', err.message);
-    if (!res.headersSent) res.status(500).end('Could not start download.');
-  });
-
-  proc.on('close', (code) => {
-    if (code !== 0 && !res.headersSent) {
-      res.status(500).end('Download failed.');
-    }
-  });
-
-  req.on('close', () => {
-    if (!proc.killed) proc.kill('SIGKILL');
-  });
+  req.on('close', () => { if (!proc.killed) proc.kill(); });
 });
 
-/* ── Tool pages ─────────────────────────────────────────────────────────── */
-Object.entries(pages.tools).forEach(([slug, page]) => {
-  app.get(`/${slug}`, (_req, res) => {
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    res.send(renderPage(page));
-  });
-});
+/* ── Rotas Dinâmicas (i18n e SPA) ────────────────────────────────────────── */
 
-/* ── Blog index ──────────────────────────────────────────────────────────── */
-app.get('/blog', (_req, res) => {
-  res.setHeader('Cache-Control', 'public, max-age=3600');
-  res.send(renderBlogIndex(pages.blogs));
-});
-
-/* ── Blog posts ──────────────────────────────────────────────────────────── */
-Object.entries(pages.blogs).forEach(([slug, page]) => {
-  app.get(`/blog/${slug}`, (_req, res) => {
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    res.send(renderPage(page));
-  });
-});
-
-/* ── i18n home pages ─────────────────────────────────────────────────────── */
-/* ── Rotas de Idiomas (i18n) ────────────────────────────────────────────── */
+// Rota para idiomas (/pt, /es, /en)
 if (pages && pages.i18n) {
-  Object.entries(pages.i18n).forEach(([slug, langData]) => {
-    app.get(`/${slug}`, (req, res) => {
-      // Como o seu sistema usa SPA fallback ou templates, vamos garantir que ele envie o index
+  Object.keys(pages.i18n).forEach((slug) => {
+    app.get(`/${slug}`, (_req, res) => {
       res.sendFile(path.join(__dirname, 'public', 'index.html'));
     });
   });
 }
 
-/* ── Rota Raiz (/) ──────────────────────────────────────────────────────── */
-app.get('/', (req, res) => {
+// Fallback para qualquer outra rota (Garante que o site não dê 404)
+app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-/* ── SPA fallback (404 e outras rotas) ──────────────────────────────────── */
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-/* ── Start ──────────────────────────────────────────────────────────────── */
+/* ── Inicialização ──────────────────────────────────────────────────────── */
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n🚀  GrabbVideos running on port ${PORT}`);
-  console.log(`    yt-dlp binary: ${YT_DLP}\n`);
+  console.log(`\n🚀  GrabbVideos rodando com sucesso na porta ${PORT}`);
+  console.log(`    yt-dlp: ${YT_DLP}\n`);
 });

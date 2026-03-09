@@ -219,9 +219,25 @@ Object.entries(pages.blogs).forEach(([slug, page]) => {
 });
 
 /* ── i18n home pages ─────────────────────────────────────────────────────── */
-Object.entries(pages.i18n).forEach(([lang, page]) => {
-  app.get(`/${lang}`,  (_req, res) => res.send(renderPage(page)));
-  app.get(`/${lang}/`, (_req, res) => res.send(renderPage(page)));
+// Rota para as páginas de tradução (/pt, /es, /de, etc)
+Object.entries(PAGES.i18n).forEach(([slug, langData]) => {
+  app.get(`/${slug}`, (req, res) => {
+    // Aqui ele renderiza a sua index usando os dados da língua específica
+    res.render('index', { 
+      page: langData, 
+      currentLang: slug,
+      SITE: SITE 
+    });
+  });
+});
+
+// Garanta que a rota raiz (/) continue funcionando
+app.get('/', (req, res) => {
+  res.render('index', { 
+    page: PAGES.i18n.en, // Ou a língua que você quer como padrão
+    currentLang: 'en',
+    SITE: SITE 
+  });
 });
 
 /* ── SPA fallback ───────────────────────────────────────────────────────── */

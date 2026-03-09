@@ -225,16 +225,17 @@ if (pages && pages.blogs) {
 
 /* ── i18n home pages ─────────────────────────────────────────────────────── */
 // Rota para as páginas de tradução (/pt, /es, /de, etc)
-Object.entries(PAGES.i18n).forEach(([slug, langData]) => {
-  app.get(`/${slug}`, (req, res) => {
-    // Aqui ele renderiza a sua index usando os dados da língua específica
-    res.render('index', { 
-      page: langData, 
-      currentLang: slug,
-      SITE: SITE 
+if (pages && pages.i18n) {
+  Object.entries(pages.i18n).forEach(([slug, langData]) => {
+    app.get(`/${slug}`, (req, res) => {
+      res.render('index', { 
+        page: langData, 
+        currentLang: slug,
+        SITE: SITE 
+      });
     });
   });
-});
+}
 
 // Garanta que a rota raiz (/) continue funcionando
 app.get('/', (req, res) => {

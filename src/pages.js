@@ -2,7 +2,7 @@
 
 const SITE = 'https://grabbvideos.com';
 
-/* ── Shared ad snippets (embedded in blog HTML) ─────────────────────── */
+/* ── Shared ad snippets ─────────────────────────────────────────────── */
 function adBanner728() {
   return `
   <div class="my-6">
@@ -18,235 +18,10 @@ function adBanner728() {
   </div>`;
 }
 
-
 /* ══════════════════════════════════════════════════════════════════════
-   BLOG CONTENT
+   PAGE DATA
 ══════════════════════════════════════════════════════════════════════ */
-
-const BLOG_REELS_ANDROID = `
-  <p class="blog-lead">Instagram Reels are everywhere — tutorials, recipes, travel clips, comedy. But Instagram's app doesn't let you save Reels to your phone's camera roll without a clunky workaround. In this guide you'll learn the <strong>fastest, cleanest method</strong> to download any Reel to your Android or iPhone in 2026 — no app required, no watermark.</p>
-
-  ${adBanner728()}
-
-  <h2>Method 1: GrabbVideos — Works on All Devices (Recommended)</h2>
-  <p>GrabbVideos is a free browser-based downloader. There's nothing to install — it works directly in Safari, Chrome, Firefox, or any mobile browser.</p>
-
-  <h3>Step 1 — Find the Reel on Instagram</h3>
-  <p>Open the Instagram app or navigate to <code>instagram.com</code> in your browser. Find the Reel you want to save.</p>
-
-  <h3>Step 2 — Copy the Reel link</h3>
-  <p><strong>On mobile:</strong> Tap the <strong>Share</strong> icon (paper airplane) at the bottom right of the Reel, then tap <em>Copy Link</em>.<br>
-  <strong>On desktop:</strong> Copy the URL directly from the browser address bar (it should look like <code>instagram.com/reel/ABC123…</code>).</p>
-
-  ${adNative('container-fcc8eca8dd1c8f4a00aad6769e6ad0a2')}
-
-  <h3>Step 3 — Paste the link in GrabbVideos</h3>
-  <p>Open <a href="/" class="text-violet-600 underline font-semibold">GrabbVideos.com</a> in your browser. Paste the copied link into the input box and tap <strong>Grab Video</strong>. Processing takes 2–5 seconds.</p>
-
-  <h3>Step 4 — Download the MP4</h3>
-  <p>Once ready, tap <strong>Download MP4</strong>. The Reel saves to your device in full HD — completely free of any watermark or logo.</p>
-
-  <h2>iPhone-Specific Instructions</h2>
-  <p>On iOS, Safari may preview the video instead of downloading it. If that happens, tap and hold the <strong>Download MP4</strong> button, then choose <em>Download Linked File</em>. The file saves to your Files app (Downloads folder). From there you can move it to Photos using the Share sheet.</p>
-  <p><strong>Tip:</strong> iPhones running iOS 16+ can save MP4 files directly to the Photos app. Tap the Share button in Files and choose <em>Save Video</em>.</p>
-
-  <h2>Android-Specific Instructions</h2>
-  <p>On Android, Chrome downloads the file directly to your Downloads folder. Open your file manager or gallery app to find the saved Reel. Most Android devices also show the download in the notification shade — tap it to open immediately.</p>
-
-  ${adBanner728()}
-
-  <h2>Method 2: Instagram's Built-In "Save" Feature</h2>
-  <p>Instagram lets you save Reels to a private "Saved" collection inside the app — but this doesn't actually download the video to your device. You can only view saved Reels within the Instagram app while connected to the internet. For true offline, device-local saves, the GrabbVideos method above is the correct approach.</p>
-
-  <h2>Method 3: Screen Recording (Last Resort)</h2>
-  <p>Both iPhone and Android support built-in screen recording. While this technically captures the video, the quality is lower (recorded at screen resolution), it captures UI elements, and the audio may clip. Use GrabbVideos for a clean, full-quality download.</p>
-
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-block">
-    <div class="faq-q">Is it legal to download Instagram Reels?</div>
-    <div class="faq-a">Downloading for personal, offline viewing is widely accepted. Do not re-upload content you don't own — that may infringe copyright and violate Instagram's terms.</div>
-    <div class="faq-q">Does the downloaded Reel have a watermark?</div>
-    <div class="faq-a">No. GrabbVideos fetches the original source file from Instagram's CDN — the MP4 has zero watermarks or overlays.</div>
-    <div class="faq-q">Why does Instagram not let me save Reels directly?</div>
-    <div class="faq-a">Instagram restricts direct downloads to keep users engaged in the app. Third-party web tools like GrabbVideos access the public media URLs that Instagram uses to stream video, bypassing this restriction legally for public content.</div>
-    <div class="faq-q">Can I download Reels from private accounts?</div>
-    <div class="faq-a">No — GrabbVideos and all browser-based tools can only access public content. Private account media is not accessible without authentication.</div>
-  </div>
-`;
-
-const BLOG_STORIES_ANON = `
-  <p class="blog-lead">Every time you tap to view a Story, Instagram adds your username to the viewer list — and the account owner can see exactly who watched. But what if you want to check a Story without leaving a trace? Here are <strong>three methods that actually work in 2026</strong>, ordered from most reliable to least.</p>
-
-  ${adBanner728()}
-
-  <h2>Method 1: GrabbVideos Story Saver (Best Method)</h2>
-  <p>The cleanest way to view Stories anonymously is to download them through a tool that fetches the media server-side — your account is never involved in the request, so no view is registered.</p>
-  <ol>
-    <li><strong>Copy the Instagram profile URL</strong> of the account whose Story you want to watch (e.g., <code>instagram.com/username</code>).</li>
-    <li>Open <a href="/story-saver" class="text-violet-600 underline">GrabbVideos Story Saver</a> and paste the URL.</li>
-    <li>Tap <strong>Grab Video</strong>. The Story media downloads directly to your device.</li>
-  </ol>
-  <p>Because GrabbVideos accesses Instagram's CDN without logging in as you, your account is never added to the viewer list. <strong>Only works for public accounts.</strong></p>
-
-  ${adNative('container-fcc8eca8dd1c8f4a00aad6769e6ad0a2')}
-
-  <h2>Method 2: Airplane Mode Trick</h2>
-  <p>This method exploits how Instagram pre-fetches Story content:</p>
-  <ol>
-    <li>Open Instagram and let the Stories load in your feed (they will pre-download automatically).</li>
-    <li>Enable <strong>Airplane Mode</strong> on your device (kills your internet connection).</li>
-    <li>Tap the Story — Instagram will play the cached version without sending a view notification to its servers.</li>
-    <li>Once you're done, force-close the app <em>before</em> re-enabling internet. Reopen with internet off, then re-enable internet after the app restarts to avoid a delayed notification being sent.</li>
-  </ol>
-  <p><strong>Limitation:</strong> This is unreliable — Instagram has progressively reduced local caching and may still register the view when connectivity is restored. It also only works for Stories already pre-loaded in your feed.</p>
-
-  <h2>Method 3: Create an Anonymous Second Account</h2>
-  <p>Creating a second Instagram account with a pseudonym lets you view Stories without revealing your identity to the content creator. However:</p>
-  <ul>
-    <li>The account still appears in the viewer list (with the anonymous name).</li>
-    <li>If the target account is private, you need to follow them, which sends a request they can trace.</li>
-    <li>This method works best for public accounts where a generic, unfamiliar username is indistinguishable from any other user.</li>
-  </ul>
-
-  ${adBanner728()}
-
-  <h2>What About Third-Party Apps That Request Your Instagram Login?</h2>
-  <p><strong>Avoid these entirely.</strong> Apps that ask for your Instagram username and password to view Stories anonymously are a significant security risk. Instagram does not authorize third-party access this way, and these apps commonly scrape credentials or get banned — taking your account with them. Never enter your Instagram password on any site other than instagram.com.</p>
-
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-block">
-    <div class="faq-q">Does Instagram notify users when you screenshot their Story?</div>
-    <div class="faq-a">As of 2026, Instagram no longer sends screenshot notifications for regular Stories (they removed this feature in 2018 after a brief test). However, it does notify for disappearing DM photos and videos.</div>
-    <div class="faq-q">Can I view Stories from private accounts anonymously?</div>
-    <div class="faq-a">No. Private accounts require the account holder to approve you as a follower. Without that, the Story content is inaccessible regardless of method.</div>
-    <div class="faq-q">Do Story views show up immediately?</div>
-    <div class="faq-a">Yes — views are typically registered in real-time when you view a Story with an active internet connection.</div>
-  </div>
-`;
-
-const BLOG_BEST_PC = `
-  <p class="blog-lead">If you need to download Instagram videos on your Windows PC, Mac, or Linux machine, you have dozens of tools to choose from. We spent a week testing the most popular options and ranked them based on <strong>download speed, video quality, privacy, ease of use, and ad load</strong>. Here are our picks for 2026.</p>
-
-  ${adBanner728()}
-
-  <h2>What We Tested</h2>
-  <p>We evaluated tools across five criteria:</p>
-  <ul>
-    <li><strong>Speed</strong> — Time from URL paste to downloadable file</li>
-    <li><strong>Quality</strong> — Does the tool deliver the original resolution (up to 1080p)?</li>
-    <li><strong>Privacy</strong> — Does it store URLs, require login, or track downloads?</li>
-    <li><strong>Ease of use</strong> — Steps required, mobile-friendliness</li>
-    <li><strong>Ad load</strong> — Number of intrusive ads, popups, or redirects</li>
-  </ul>
-
-  <h2>#1 GrabbVideos.com — Best Overall</h2>
-  <p>GrabbVideos leads the category in 2026 for its combination of speed, clean UI, and zero data retention. Unlike most competitors, it doesn't require email registration or store your download history.</p>
-  <table class="tool-table">
-    <tr><th>Speed</th><td>2–4 seconds average</td></tr>
-    <tr><th>Quality</th><td>Up to 1080p MP4</td></tr>
-    <tr><th>Watermark</th><td>None</td></tr>
-    <tr><th>Login required</th><td>No</td></tr>
-    <tr><th>Platforms</th><td>Instagram + TikTok</td></tr>
-  </table>
-  <p><a href="/" class="cta-link">→ Try GrabbVideos free</a></p>
-
-  ${adNative('container-fcc8eca8dd1c8f4a00aad6769e6ad0a2')}
-
-  <h2>#2–3: Other Established Web Tools</h2>
-  <p>Several other browser-based downloaders work reasonably well but have trade-offs worth noting:</p>
-  <ul>
-    <li><strong>High ad load</strong> — Many popular tools redirect through 2–3 ad pages before triggering the download. This significantly hurts the experience on PC.</li>
-    <li><strong>Login prompts</strong> — Some tools ask for your Instagram credentials to improve download success rates. Avoid entering your actual password.</li>
-    <li><strong>Lower output quality</strong> — A few tools compress the video or strip audio metadata, resulting in a lower-quality file than the original.</li>
-  </ul>
-  <p>Based on our tests, the gap in user experience between GrabbVideos and the next tier of tools is significant — primarily due to cleaner download flow and better mobile performance.</p>
-
-  <h2>How to Use GrabbVideos on PC (Windows, Mac, Linux)</h2>
-  <p>No installation is needed. GrabbVideos runs entirely in your browser:</p>
-  <ol>
-    <li>Open Instagram in one tab and find the video, Reel, or Story you want.</li>
-    <li>Copy the URL from the address bar (or right-click the video and copy the link).</li>
-    <li>Open <a href="/" class="text-violet-600 underline">GrabbVideos.com</a> in another tab.</li>
-    <li>Paste the URL and click <strong>Grab Video</strong>.</li>
-    <li>Click <strong>Download MP4</strong> — the file saves to your Downloads folder automatically.</li>
-  </ol>
-
-  ${adBanner728()}
-
-  <h2>Browser Extensions vs. Web Tools</h2>
-  <p>Browser extensions for Instagram downloading exist but carry higher risk: they request broad permissions (read all website data), are frequently removed from the Chrome Web Store for policy violations, and some have been caught injecting ads or collecting browsing data. A dedicated web tool with no browser permissions is a safer and more reliable choice.</p>
-
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-block">
-    <div class="faq-q">Do I need to install software to download Instagram videos on PC?</div>
-    <div class="faq-a">No. GrabbVideos and similar web tools run in any browser — Chrome, Firefox, Edge, Safari. No software, extension, or account needed.</div>
-    <div class="faq-q">What video format does GrabbVideos download?</div>
-    <div class="faq-a">MP4 (H.264), the most widely compatible video format for PC, mobile, and editing software.</div>
-    <div class="faq-q">Can I download Instagram videos on a Chromebook?</div>
-    <div class="faq-a">Yes. GrabbVideos works in Chrome on Chromebook. Files save to the Downloads folder in the Files app.</div>
-    <div class="faq-q">Why is my downloaded video lower quality than the original?</div>
-    <div class="faq-a">GrabbVideos always requests the best available quality. If a video appears lower-res, the original upload was at that resolution — Instagram re-encodes uploaded video and caps at 1080p.</div>
-  </div>
-`;
-
-const BLOG_PRIVATE = `
-  <p class="blog-lead">"How to download private Instagram videos" is one of the most searched Instagram questions online. Before we get into what's technically possible, let's be direct: <strong>there is no legitimate, safe way to download videos from a private Instagram account you don't own</strong>. Here's exactly why — and what you <em>can</em> do instead.</p>
-
-  ${adBanner728()}
-
-  <h2>Why You Can't Download Private Instagram Videos</h2>
-  <p>Private accounts set their profile to <em>Followers Only</em>, which means Instagram's servers refuse to serve media to unauthenticated requests. Every tool that claims to download private videos is either:</p>
-  <ul>
-    <li><strong>Lying</strong> — They redirect you to content farms or malware disguised as a download.</li>
-    <li><strong>Credential-harvesting</strong> — They ask for your Instagram username and password, then use your account (with your follower privileges) to access the content. This violates Instagram's Terms of Service and puts your account at serious risk of being permanently banned.</li>
-    <li><strong>Outdated</strong> — Some old exploits existed years ago but have been patched. Any site still claiming these methods work in 2026 is misleading you.</li>
-  </ul>
-
-  ${adNative('container-fcc8eca8dd1c8f4a00aad6769e6ad0a2')}
-
-  <h2>The Only Legitimate Method: Your Own Content</h2>
-  <p>If the private Instagram account is <strong>yours</strong>, you can download all your content — including videos — through Instagram's official <strong>Data Download</strong> feature:</p>
-  <ol>
-    <li>Go to your Instagram profile on a browser (instagram.com).</li>
-    <li>Tap <strong>More → Your activity → Download your information</strong>.</li>
-    <li>Select <strong>Media</strong> and choose your date range.</li>
-    <li>Request the download — Instagram emails you a link within 24–48 hours.</li>
-    <li>Unzip the file to find all your videos in MP4 format.</li>
-  </ol>
-  <p>This is the only 100% safe, legal, and reliable method to retrieve your own private Instagram videos.</p>
-
-  <h2>What About Content You Have Permission to Download?</h2>
-  <p>If a friend or creator has shared content on a private account and explicitly gives you permission to save it, the most practical approach is to ask them to:</p>
-  <ul>
-    <li>Temporarily switch their account to public so you can use a tool like GrabbVideos.</li>
-    <li>Send the video directly to you via Instagram DMs or another messaging platform.</li>
-    <li>Use Instagram's "Close Friends" story share + screenshot/screen record (with their knowledge).</li>
-  </ul>
-
-  ${adBanner728()}
-
-  <h2>What GrabbVideos Can Do</h2>
-  <p>GrabbVideos is a fast, free tool for downloading <strong>public</strong> Instagram Reels, Stories, Posts, and TikTok videos — without watermarks and without needing an account.</p>
-  <p><a href="/" class="cta-link">→ Try GrabbVideos on public content</a></p>
-
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-block">
-    <div class="faq-q">Is it illegal to download private Instagram videos without permission?</div>
-    <div class="faq-a">Accessing private content without authorization likely violates Instagram's Terms of Service and potentially computer access laws in many jurisdictions, even if the content itself isn't copyrighted. Always get permission first.</div>
-    <div class="faq-q">Can someone tell if I've tried to download their private video?</div>
-    <div class="faq-a">Direct download attempts against private content are blocked at the server level — no notification is sent. However, if you use a third-party app that logs into Instagram using your credentials to access the content, Instagram may detect the unusual login activity.</div>
-    <div class="faq-q">What if I'm a journalist and need the content for reporting?</div>
-    <div class="faq-a">For legitimate journalistic use, screenshot or screen-record the content with your own device (retains metadata), document the source and date, and consult your organization's legal counsel for fair use guidance.</div>
-    <div class="faq-q">Will GrabbVideos ever support private accounts?</div>
-    <div class="faq-a">No. GrabbVideos is designed to respect user privacy. Supporting private account downloads would require users to provide credentials — a serious security risk we will never implement.</div>
-  </div>
-`;
-
-/* ══════════════════════════════════════════════════════════════════════
-   PAGE DATA EXPORTS
-══════════════════════════════════════════════════════════════════════ */
-module.exports = {
-  SITE,
+const PAGES = {
 
   /* ── Tool pages ────────────────────────────────────────────────── */
   tools: {
@@ -347,71 +122,10 @@ module.exports = {
     },
   },
 
-  /* ── Blog posts ────────────────────────────────────────────────── */
-  blogs: {
-    'how-to-download-instagram-reels-android-iphone': {
-      slug: 'how-to-download-instagram-reels-android-iphone',
-      type: 'blog',
-      canonical: `${SITE}/blog/how-to-download-instagram-reels-android-iphone`,
-      title: 'How to Download Instagram Reels on Android and iPhone (2026 Guide)',
-      description: 'Step-by-step guide to download any Instagram Reel on Android or iPhone — no watermark, no app needed, 100% free in 2026.',
-      h1: 'How to Download Instagram Reels on Android and iPhone',
-      ogImage: `${SITE}/og-image.png`,
-      datePublished: '2026-01-01',
-      dateModified: '2026-03-01',
-      readingTime: '4 min read',
-      category: 'Instagram Tips',
-      bodyHtml: BLOG_REELS_ANDROID,
-    },
-
-    'how-to-view-instagram-stories-anonymously': {
-      slug: 'how-to-view-instagram-stories-anonymously',
-      type: 'blog',
-      canonical: `${SITE}/blog/how-to-view-instagram-stories-anonymously`,
-      title: 'How to View Instagram Stories Anonymously in 2026 (3 Methods)',
-      description: 'Three proven methods to view and save Instagram Stories without being seen. Works on iPhone, Android, and desktop — no login required.',
-      h1: 'How to View Instagram Stories Anonymously (2026)',
-      ogImage: `${SITE}/og-image.png`,
-      datePublished: '2026-01-15',
-      dateModified: '2026-03-01',
-      readingTime: '5 min read',
-      category: 'Instagram Tips',
-      bodyHtml: BLOG_STORIES_ANON,
-    },
-
-    'best-instagram-video-downloader-pc-2026': {
-      slug: 'best-instagram-video-downloader-pc-2026',
-      type: 'blog',
-      canonical: `${SITE}/blog/best-instagram-video-downloader-pc-2026`,
-      title: 'Best Instagram Video Downloader for PC in 2026 (Ranked & Reviewed)',
-      description: 'We tested 10+ Instagram video downloaders for PC. Here are the best free tools to save Reels, Stories and Posts on Windows and Mac in 2026.',
-      h1: 'Best Instagram Video Downloader for PC 2026',
-      ogImage: `${SITE}/og-image.png`,
-      datePublished: '2026-02-01',
-      dateModified: '2026-03-01',
-      readingTime: '7 min read',
-      category: 'Reviews',
-      bodyHtml: BLOG_BEST_PC,
-    },
-
-    'how-to-download-private-instagram-videos': {
-      slug: 'how-to-download-private-instagram-videos',
-      type: 'blog',
-      canonical: `${SITE}/blog/how-to-download-private-instagram-videos`,
-      title: 'How to Download Private Instagram Videos — What Works in 2026',
-      description: 'Can you download videos from private Instagram accounts? We explain what is technically possible, what is legal, and the only legitimate method.',
-      h1: 'How to Download Private Instagram Videos (What Works in 2026)',
-      ogImage: `${SITE}/og-image.png`,
-      datePublished: '2026-02-10',
-      dateModified: '2026-03-01',
-      readingTime: '5 min read',
-      category: 'Instagram Tips',
-      bodyHtml: BLOG_PRIVATE,
-    },
-  },
-
   /* ── i18n home pages ───────────────────────────────────────────── */
   i18n: {
+
+    /* ── Portuguese ──────────────────────────────────────────────── */
     pt: {
       lang: 'pt',
       type: 'i18n',
@@ -527,86 +241,239 @@ module.exports = {
       ],
     },
 
+    /* ── English ─────────────────────────────────────────────────── */
+    en: {
+      lang: 'en',
+      type: 'i18n',
+      slug: 'en',
+      canonical: `${SITE}/en`,
+      title: 'Download Instagram & TikTok Videos Without Watermark Free | GrabbVideos',
+      description: 'Download Instagram Reels, Stories, and TikTok videos in HD MP4 without watermark and without signup. 100% free, safe, works on iPhone, Android & PC.',
+      h1: 'Download Instagram & TikTok Videos Without Watermark',
+      subtitle: 'Save Reels, Stories and TikTok videos in HD MP4 — no account, no app, 100% free.',
+      ogImage: `${SITE}/og-image.png`,
+      btnLabel: 'Grab Video',
+      placeholder: 'Paste Instagram or TikTok link here…',
+      processing: 'Processing…',
+      grabbing: 'Grabbing your video…',
+      videoReady: '✓ Video ready',
+      downloadBtn: 'Download MP4',
+      howToTitle: 'How to Download Instagram & TikTok Videos',
+      toolCardTitle: 'Paste the video link below',
+      toolCardSubtitle: 'Instagram Reels · Stories · Posts · TikTok',
+      steps: [
+        {
+          title: 'Open the video on Instagram or TikTok',
+          desc: 'In the app or mobile browser, navigate to the Reel, Post, Story, or TikTok video you want to save. The content must come from a public profile for the download to work.',
+        },
+        {
+          title: 'Copy the video link',
+          desc: 'On Instagram, tap the three-dot menu (···) and select "Copy Link". On TikTok, tap "Share" then "Copy Link". On desktop, simply copy the URL directly from the browser address bar.',
+        },
+        {
+          title: 'Paste the link and click "Grab Video"',
+          desc: 'Go to GrabbVideos, paste the copied link into the text field, and press the "Grab Video" button. The system will process your request in just a few seconds, automatically detecting the platform and best available quality.',
+        },
+        {
+          title: 'Save the MP4 to your device',
+          desc: 'Once the video is ready, click "Download MP4". The file will be saved directly to your phone or computer in high definition — completely watermark-free and with no login or signup required.',
+        },
+      ],
+      features: [
+        {
+          title: 'Lightning Fast Downloads',
+          desc: 'GrabbVideos processes your request in seconds, with no waiting queues or unnecessary loading time. Our infrastructure is optimized to deliver your download link as quickly as possible, regardless of video size.',
+        },
+        {
+          title: 'No Watermark',
+          desc: 'Unlike TikTok\'s built-in save feature, GrabbVideos accesses the original video source, delivering a completely clean MP4 with no logo or watermark overlay. What you download is exactly what the creator published.',
+        },
+        {
+          title: 'No Signup Required',
+          desc: 'We never ask for your email, password, or any personal data. Just paste the link and click download — no forms, no account confirmation, no unnecessary steps. The entire process takes under 30 seconds.',
+        },
+        {
+          title: 'Works on iPhone and Android',
+          desc: 'GrabbVideos is built to work perfectly in any mobile browser, including Safari on iPhone and Chrome on Android. No app or extension needs to be installed — everything happens directly in your browser.',
+        },
+        {
+          title: 'HD Quality up to 1080p',
+          desc: 'We always select the highest available resolution for the requested video, up to 1080p Full HD. The delivered file is an MP4 compatible with all modern devices, ready to watch offline or edit.',
+        },
+        {
+          title: '100% Safe and Private',
+          desc: 'No links or videos are stored on our servers after processing. All requests are handled in real-time and discarded immediately. Your privacy is our priority — see our Privacy Policy for full details.',
+        },
+      ],
+      faq: [
+        {
+          q: 'Is GrabbVideos really free?',
+          a: 'Yes, GrabbVideos is 100% free with no usage limits. You can download as many videos as you want without signing up for any paid plan, creating an account, or dealing with intrusive ads. The tool stays free thanks to small, unobtrusive display ads shown on the page.',
+        },
+        {
+          q: 'How do I download a TikTok video without a watermark?',
+          a: 'Simply copy the video link on TikTok (tap "Share" → "Copy Link"), paste it into GrabbVideos, and click "Grab Video". GrabbVideos accesses the original version of the file directly — the one without the TikTok watermark — and delivers a clean MP4 for you to save.',
+        },
+        {
+          q: 'How do I download Instagram videos on iPhone?',
+          a: 'On iPhone, open Instagram and navigate to the video or Reel you want. Tap the three-dot menu (···) and select "Copy Link". Then open Safari and go to grabbvideos.com. Paste the link in the field and tap "Grab Video". When the download is ready, tap "Download MP4" and the video will be saved to your iPhone\'s Files app.',
+        },
+        {
+          q: 'How do I download Instagram videos on Android?',
+          a: 'On Android, copy the video link by tapping ··· → "Copy Link" on Instagram, or "Share" → "Copy Link" on TikTok. Open Chrome or any browser and go to grabbvideos.com. Paste the link and tap "Grab Video". The MP4 file will automatically download to the "Downloads" folder on your device.',
+        },
+        {
+          q: 'Is it legal to download Instagram and TikTok videos?',
+          a: 'Downloading videos for personal, offline viewing is generally accepted in most countries, especially for content from public profiles. However, redistributing, reposting, or commercially using videos without the creator\'s permission may infringe copyright. GrabbVideos recommends that downloads be used for personal consumption only, and that you always credit and respect the original content creators.',
+        },
+        {
+          q: 'Is GrabbVideos safe? Is my data protected?',
+          a: 'Yes. GrabbVideos does not request any personal data and does not store submitted links after processing. The entire process is done in real-time: the link is received, the video is located, and the MP4 is delivered — with no history kept. The site uses encrypted HTTPS connections and installs no tracking cookies beyond those required for anonymous traffic analytics.',
+        },
+        {
+          q: 'Do I need to create an account or sign up?',
+          a: 'No. GrabbVideos was built specifically to eliminate that friction. There is no signup, login, email verification, or account of any kind required. You visit the site, paste the link, and download the video — that\'s it. We will never ask for your personal information.',
+        },
+        {
+          q: 'What quality will the downloaded video be?',
+          a: 'GrabbVideos always automatically selects the best available quality for each video, which can reach Full HD (1080p). The final quality depends on what was originally published by the creator on the platform — if the original upload was 720p, the download will also be 720p. The delivered format is always MP4, compatible with all devices.',
+        },
+        {
+          q: 'Can I download videos from private accounts?',
+          a: 'No. GrabbVideos can only access content from public profiles, as it does not authenticate with any account. Videos from private profiles are protected by the platforms and cannot be accessed by third-party tools without login, which preserves user privacy.',
+        },
+        {
+          q: 'Why does the error "Could not download this video" appear?',
+          a: 'The most common causes are: the profile is private, the video was deleted by the creator, the link is incomplete, or the content is a Story that has already expired. To avoid this issue, always copy the link directly via the "Share" → "Copy Link" button within the app rather than typing the URL manually. If the problem persists, try again in a few minutes.',
+        },
+        {
+          q: 'Does it work on desktop (Windows and Mac)?',
+          a: 'Yes. GrabbVideos works in any modern browser on desktop, including Google Chrome, Mozilla Firefox, Microsoft Edge, and Safari on Mac. Simply visit grabbvideos.com, copy the video link from the Instagram or TikTok address bar, paste it into the field, and click "Grab Video".',
+        },
+        {
+          q: 'How long does it take to download a video?',
+          a: 'Processing usually takes between 2 and 5 seconds. Longer or higher-resolution videos may take slightly more time. After clicking "Grab Video", a progress indicator will show real-time status. The actual download to your device also depends on the speed of your internet connection.',
+        },
+      ],
+    },
+
+    /* ── Spanish ─────────────────────────────────────────────────── */
     es: {
       lang: 'es',
       type: 'i18n',
       slug: 'es',
       canonical: `${SITE}/es`,
-      title: 'Descargar Reels y Vídeos de Instagram y TikTok Gratis | GrabbVideos',
-      description: 'Descarga Reels, Stories y vídeos de Instagram y TikTok en MP4 HD — sin marca de agua, sin registro. Rápido y 100% gratis.',
-      h1: 'Descarga Cualquier Vídeo Sin Marca de Agua.',
-      subtitle: 'Instagram Reels, Stories y vídeos de TikTok en MP4 HD — sin cuenta, sin app, gratis.',
+      title: 'Descargar Vídeos de Instagram y TikTok Sin Marca de Agua Gratis | GrabbVideos',
+      description: 'Descarga Reels, Stories y vídeos de Instagram y TikTok en MP4 HD sin marca de agua y sin registro. Herramienta 100% gratuita, segura y compatible con móvil y PC.',
+      h1: 'Descarga Vídeos de Instagram y TikTok Sin Marca de Agua',
+      subtitle: 'Guarda Reels, Stories y vídeos de TikTok en MP4 HD directamente en tu dispositivo — sin cuenta, sin app, 100% gratis.',
       ogImage: `${SITE}/og-image.png`,
       btnLabel: 'Descargar Vídeo',
       placeholder: 'Pega el enlace de Instagram o TikTok aquí…',
       processing: 'Procesando…',
       grabbing: 'Descargando tu vídeo…',
       videoReady: '✓ Vídeo listo',
-      downloadBtn: 'Download MP4',
-      howToTitle: 'Cómo Descargar Vídeos de Instagram',
+      downloadBtn: 'Descargar MP4',
+      howToTitle: 'Cómo Descargar Vídeos de Instagram y TikTok',
       toolCardTitle: 'Pega el enlace del vídeo abajo',
       toolCardSubtitle: 'Instagram Reels · Stories · Posts · TikTok',
       steps: [
-        { title: 'Abre el vídeo en Instagram', desc: 'Navega al Reel, Post o Story en la app o en el navegador.' },
-        { title: 'Copia el enlace', desc: 'Toca ··· → Copiar enlace. En escritorio, copia la URL de la barra de direcciones.' },
-        { title: 'Pega y haz clic en Descargar Vídeo', desc: 'Pega el enlace arriba y presiona el botón.' },
-        { title: 'Haz clic en Download MP4', desc: 'El vídeo HD se guarda en tu dispositivo sin marca de agua.' },
+        {
+          title: 'Abre el vídeo en Instagram o TikTok',
+          desc: 'En la app o el navegador del móvil, navega hasta el Reel, Post, Story o vídeo de TikTok que deseas guardar. El contenido debe pertenecer a un perfil público para que la descarga funcione.',
+        },
+        {
+          title: 'Copia el enlace del vídeo',
+          desc: 'En Instagram, toca los tres puntos (···) y selecciona "Copiar enlace". En TikTok, toca "Compartir" y después "Copiar enlace". En el ordenador, copia la URL directamente de la barra de direcciones del navegador.',
+        },
+        {
+          title: 'Pega el enlace y haz clic en "Descargar Vídeo"',
+          desc: 'Accede a GrabbVideos, pega el enlace copiado en el campo de texto y pulsa el botón "Descargar Vídeo". El sistema procesará tu solicitud en pocos segundos, identificando automáticamente la plataforma y la mejor calidad disponible.',
+        },
+        {
+          title: 'Guarda el MP4 en tu dispositivo',
+          desc: 'Cuando el vídeo esté listo, haz clic en "Descargar MP4". El archivo se guardará directamente en tu móvil u ordenador en alta definición, completamente libre de marca de agua y sin necesidad de iniciar sesión o registrarse.',
+        },
       ],
       features: [
-        { title: 'Ultra Rápido', desc: 'Vídeo listo en segundos, sin esperas.' },
-        { title: 'Sin Marca de Agua', desc: 'MP4 limpio sin logo de TikTok o Instagram.' },
-        { title: 'Sin Registro', desc: 'Sin cuentas ni formularios — solo pega y descarga.' },
-        { title: 'Mobile-Friendly', desc: 'Funciona en iPhone, Android y escritorio.' },
-        { title: 'Calidad HD', desc: 'Resolución máxima disponible — hasta 1080p MP4.' },
-        { title: '100% Privado', desc: 'Nunca guardamos tus enlaces ni descargas.' },
+        {
+          title: 'Ultra Rápido',
+          desc: 'GrabbVideos procesa tu solicitud en segundos, sin colas de espera ni tiempos de carga innecesarios. Nuestra infraestructura está optimizada para entregarte el enlace de descarga lo antes posible, independientemente del tamaño del vídeo.',
+        },
+        {
+          title: 'Sin Marca de Agua',
+          desc: 'A diferencia de la descarga estándar de TikTok, GrabbVideos accede a la fuente original del vídeo, entregando un archivo MP4 completamente limpio, sin ningún logotipo o marca de agua superpuesto. Lo que descargas es exactamente lo que el creador publicó.',
+        },
+        {
+          title: 'Sin Registro',
+          desc: 'Nunca pedimos correo electrónico, contraseña ni ningún dato personal. Solo pega el enlace y haz clic en descargar — sin formularios, sin confirmación de cuenta, sin pasos innecesarios. Todo el proceso lleva menos de 30 segundos.',
+        },
+        {
+          title: 'Compatible con Móvil',
+          desc: 'GrabbVideos está diseñado para funcionar perfectamente en cualquier navegador móvil, incluyendo Safari en iPhone y Chrome en Android. No es necesario instalar ninguna aplicación ni extensión — todo ocurre directamente en el navegador.',
+        },
+        {
+          title: 'Calidad HD hasta 1080p',
+          desc: 'Siempre seleccionamos la resolución más alta disponible para el vídeo solicitado, pudiendo llegar a Full HD 1080p. El archivo entregado es un MP4 compatible con todos los dispositivos modernos, listo para ver sin conexión o editar.',
+        },
+        {
+          title: '100% Seguro y Privado',
+          desc: 'Ningún enlace ni vídeo se almacena en nuestros servidores tras el procesamiento. Todas las solicitudes se gestionan en tiempo real y se descartan inmediatamente. Tu privacidad es nuestra prioridad — consulta nuestra Política de Privacidad para más información.',
+        },
       ],
       faq: [
-        { q: '¿GrabbVideos es gratis?', a: 'Sí — 100% gratis, sin límites, sin cuenta.' },
-        { q: '¿Elimina la marca de agua de TikTok?', a: 'Sí. GrabbVideos obtiene el vídeo original directamente — sin marcas de agua.' },
-        { q: '¿Funciona en iPhone?', a: 'Sí. Abre Safari, pega el enlace y toca Descargar Vídeo.' },
-        { q: '¿Y en Android?', a: 'Sí. Usa Chrome, pega el enlace y toca Descargar Vídeo. El MP4 va a Descargas.' },
+        {
+          q: '¿GrabbVideos es realmente gratis?',
+          a: 'Sí, GrabbVideos es 100% gratuito y sin límites de uso. Puedes descargar todos los vídeos que quieras sin suscribirte a ningún plan de pago, sin crear una cuenta y sin anuncios intrusivos. La herramienta se mantiene gratuita gracias a pequeños anuncios discretos que se muestran en la página.',
+        },
+        {
+          q: '¿Cómo descargar un vídeo de TikTok sin marca de agua?',
+          a: 'Solo tienes que copiar el enlace del vídeo en TikTok (toca "Compartir" → "Copiar enlace"), pegarlo en GrabbVideos y hacer clic en "Descargar Vídeo". GrabbVideos accede directamente a la versión original del archivo, que no tiene la marca de agua de TikTok, y te entrega un MP4 limpio para guardar.',
+        },
+        {
+          q: '¿Cómo descargar vídeos de Instagram en iPhone?',
+          a: 'En el iPhone, abre Instagram y navega hasta el vídeo o Reel deseado. Toca los tres puntos (···) y selecciona "Copiar enlace". Luego abre Safari y accede a grabbvideos.com. Pega el enlace en el campo indicado y toca "Descargar Vídeo". Cuando la descarga esté lista, toca "Descargar MP4" y el vídeo se guardará en los archivos de tu iPhone.',
+        },
+        {
+          q: '¿Cómo descargar vídeos de Instagram en Android?',
+          a: 'En Android, copia el enlace del vídeo tocando ··· → "Copiar enlace" en Instagram, o "Compartir" → "Copiar enlace" en TikTok. Abre Chrome o cualquier navegador y accede a grabbvideos.com. Pega el enlace y toca "Descargar Vídeo". El archivo MP4 se descargará automáticamente en la carpeta "Descargas" de tu dispositivo.',
+        },
+        {
+          q: '¿Es legal descargar vídeos de Instagram y TikTok?',
+          a: 'Descargar vídeos para uso personal y sin conexión es generalmente aceptado en la mayoría de los países, especialmente cuando el contenido es de perfiles públicos. Sin embargo, redistribuir, volver a publicar o usar comercialmente vídeos sin la autorización del creador puede infringir los derechos de autor. GrabbVideos recomienda que las descargas se usen solo para consumo personal y offline, respetando siempre los créditos de los creadores de contenido.',
+        },
+        {
+          q: '¿Es seguro GrabbVideos? ¿Mis datos están protegidos?',
+          a: 'Sí. GrabbVideos no solicita ningún dato personal y no almacena los enlaces enviados tras el procesamiento. Todo el proceso se realiza en tiempo real: el enlace se recibe, el vídeo se localiza y el MP4 se entrega, sin guardar ningún historial. El sitio utiliza conexión HTTPS cifrada y no instala cookies de seguimiento más allá de las necesarias para el análisis de tráfico anónimo.',
+        },
+        {
+          q: '¿Necesito crear una cuenta o registrarme?',
+          a: 'No. GrabbVideos fue creado precisamente para eliminar esa fricción. No hay registro, inicio de sesión, verificación de correo electrónico ni ningún tipo de cuenta. Accedes al sitio, pegas el enlace y descargas el vídeo, así de sencillo. Nunca pediremos tu información personal.',
+        },
+        {
+          q: '¿Qué calidad tendrá el vídeo descargado?',
+          a: 'GrabbVideos siempre selecciona automáticamente la mejor calidad disponible para cada vídeo, que puede llegar a Full HD (1080p). La calidad final depende de lo que publicó originalmente el creador en la plataforma; si la subida original fue en 720p, la descarga también será en 720p. El formato entregado es siempre MP4, compatible con todos los dispositivos.',
+        },
+        {
+          q: '¿Puedo descargar vídeos de cuentas privadas?',
+          a: 'No. GrabbVideos solo puede acceder a contenidos de perfiles públicos, ya que no realiza autenticación en ninguna cuenta. Los vídeos de perfiles privados están protegidos por las plataformas y no pueden ser accedidos por herramientas de terceros sin inicio de sesión, lo que preserva la privacidad de los usuarios.',
+        },
+        {
+          q: '¿Por qué aparece el error "No se pudo descargar este vídeo"?',
+          a: 'Las causas más comunes son: el perfil es privado, el vídeo fue eliminado por el creador, el enlace está incompleto o el contenido es un Story que ya ha expirado. Para evitar este problema, asegúrate de copiar el enlace directamente desde el botón "Compartir" → "Copiar enlace" dentro de la app, y no escribiendo la URL manualmente. Si el problema persiste, inténtalo de nuevo en unos minutos.',
+        },
+        {
+          q: '¿Funciona en ordenador (Windows y Mac)?',
+          a: 'Sí. GrabbVideos funciona en cualquier navegador moderno del ordenador, incluyendo Google Chrome, Mozilla Firefox, Microsoft Edge y Safari en Mac. Solo tienes que acceder a grabbvideos.com, copiar el enlace del vídeo de la barra de direcciones de Instagram o TikTok, pegarlo en el campo y hacer clic en "Descargar Vídeo".',
+        },
+        {
+          q: '¿Cuánto tiempo tarda en descargar un vídeo?',
+          a: 'El procesamiento suele tardar entre 2 y 5 segundos. Los vídeos más largos o de mayor resolución pueden tardar un poco más. Después de hacer clic en "Descargar Vídeo", un indicador de progreso mostrará el estado en tiempo real. La descarga del archivo en tu dispositivo también depende de la velocidad de tu conexión a Internet.',
+        },
       ],
     },
 
-    de: {
-      lang: 'de',
-      type: 'i18n',
-      slug: 'de',
-      canonical: `${SITE}/de`,
-      title: 'Instagram & TikTok Videos kostenlos herunterladen | GrabbVideos',
-      description: 'Lade Instagram Reels, Stories und TikTok-Videos als HD MP4 herunter — ohne Wasserzeichen, ohne Registrierung. Schnell und kostenlos.',
-      h1: 'Videos ohne Wasserzeichen herunterladen.',
-      subtitle: 'Instagram Reels, Stories und TikTok-Videos als HD MP4 — kein Account, keine App, kostenlos.',
-      ogImage: `${SITE}/og-image.png`,
-      btnLabel: 'Video herunterladen',
-      placeholder: 'Instagram- oder TikTok-Link hier einfügen…',
-      processing: 'Verarbeitung…',
-      grabbing: 'Video wird geladen…',
-      videoReady: '✓ Video bereit',
-      downloadBtn: 'Download MP4',
-      howToTitle: 'Wie man Instagram-Videos herunterlädt',
-      toolCardTitle: 'Video-Link unten einfügen',
-      toolCardSubtitle: 'Instagram Reels · Stories · Posts · TikTok',
-      steps: [
-        { title: 'Video auf Instagram öffnen', desc: 'Navigiere zum Reel, Post oder zur Story in der App oder im Browser.' },
-        { title: 'Link kopieren', desc: 'Tippe auf ··· → Link kopieren. Auf dem Desktop die URL aus der Adressleiste kopieren.' },
-        { title: 'Einfügen und auf Video herunterladen klicken', desc: 'Füge den Link oben ein und klicke auf den Button.' },
-        { title: 'Download MP4 klicken', desc: 'Das HD-Video wird ohne Wasserzeichen auf dein Gerät gespeichert.' },
-      ],
-      features: [
-        { title: 'Blitzschnell', desc: 'Video in Sekunden bereit — keine Warteschlange.' },
-        { title: 'Kein Wasserzeichen', desc: 'Sauberes MP4 ohne TikTok- oder Instagram-Logo.' },
-        { title: 'Keine Registrierung', desc: 'Kein Account, kein Formular — nur einfügen.' },
-        { title: 'Mobilfreundlich', desc: 'Funktioniert auf iPhone, Android und Desktop.' },
-        { title: 'HD-Qualität', desc: 'Beste verfügbare Auflösung — bis zu 1080p MP4.' },
-        { title: '100% Privat', desc: 'Wir speichern keine Links oder Downloads.' },
-      ],
-      faq: [
-        { q: 'Ist GrabbVideos kostenlos?', a: 'Ja — 100% kostenlos, unbegrenzt, kein Account.' },
-        { q: 'Wird das TikTok-Wasserzeichen entfernt?', a: 'Ja. GrabbVideos lädt das Original-Video direkt herunter — ohne Wasserzeichen.' },
-        { q: 'Funktioniert es auf dem iPhone?', a: 'Ja. Safari öffnen, Link einfügen, auf Video herunterladen tippen.' },
-        { q: 'Und auf Android?', a: 'Ja. Chrome öffnen, Link einfügen, auf Video herunterladen tippen. MP4 geht in Downloads.' },
-      ],
-    },
   },
 };
+
+module.exports = PAGES;

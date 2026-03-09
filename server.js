@@ -211,12 +211,17 @@ app.get('/blog', (_req, res) => {
 });
 
 /* ── Blog posts ──────────────────────────────────────────────────────────── */
-Object.entries(pages.blogs).forEach(([slug, page]) => {
-  app.get(`/blog/${slug}`, (_req, res) => {
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    res.send(renderPage(page));
+if (PAGES.blogs) {
+  Object.entries(PAGES.blogs).forEach(([slug, page]) => {
+    app.get(`/blog/${slug}`, (req, res) => {
+      res.render('blog-post', { 
+        page: page, 
+        SITE: SITE,
+        currentLang: 'en' 
+      });
+    });
   });
-});
+}
 
 /* ── i18n home pages ─────────────────────────────────────────────────────── */
 // Rota para as páginas de tradução (/pt, /es, /de, etc)

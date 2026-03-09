@@ -211,8 +211,8 @@ app.get('/blog', (_req, res) => {
 });
 
 /* ── Blog posts ──────────────────────────────────────────────────────────── */
-if (PAGES.blogs) {
-  Object.entries(PAGES.blogs).forEach(([slug, page]) => {
+if (pages && pages.blogs) {
+  Object.entries(pages.blogs).forEach(([slug, page]) => {
     app.get(`/blog/${slug}`, (req, res) => {
       res.render('blog-post', { 
         page: page, 

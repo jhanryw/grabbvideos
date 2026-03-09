@@ -253,7 +253,7 @@
       Grab Any Video.<br/>
       <span class="text-violet-300">No Watermark. Free.</span>
     </h1>
-    <p class="text-purple-200/80 text-sm sm:text-base max-w-lg mx-auto">
+    <p id="subtitle" class="text-purple-200/80 text-sm sm:text-base max-w-lg mx-auto">
       Download <strong class="text-white">Instagram Reels, Stories &amp; Posts</strong> and
       <strong class="text-white">TikTok videos</strong> in HD MP4 — no account, no app, instant.
     </p>
@@ -706,24 +706,38 @@
   });
 </script>
 
+<script src="/pages.js"></script>
 <script>
   window.addEventListener('DOMContentLoaded', () => {
-    // 1. Pega o slug da URL (ex: /pt)
-    const slug = window.location.pathname.replace('/', '');
+    // 1. Pega a língua da URL (ex: /pt)
+    const slug = window.location.pathname.replace(/\//g, '');
     
-    // 2. Verifica se existem dados para esse idioma no seu pages.js
+    // 2. Verifica se a língua existe no pages.js
     if (typeof PAGES !== 'undefined' && PAGES.i18n && PAGES.i18n[slug]) {
       const data = PAGES.i18n[slug];
       
-      // 3. Substitui os textos principais (certifique-se de que os IDs batem com seu HTML)
-      if (data.h1) document.querySelector('h1').innerText = data.h1;
-      if (data.subtitle) document.querySelector('#subtitle').innerText = data.subtitle;
-      if (data.placeholder) document.querySelector('#url-input').placeholder = data.placeholder;
-      if (data.btnLabel) document.querySelector('#btn-grab').innerText = data.btnLabel;
+      // 3. Substitui os textos (Usando os IDs exatos do seu HTML)
+      if (data.h1) {
+        const h1 = document.querySelector('h1');
+        if (h1) h1.innerText = data.h1;
+      }
+      if (data.subtitle) {
+        const sub = document.getElementById('subtitle');
+        if (sub) sub.innerText = data.subtitle;
+      }
+      if (data.placeholder) {
+        const input = document.getElementById('urlInput');
+        if (input) input.placeholder = data.placeholder;
+      }
+      if (data.btnLabel) {
+        const btnText = document.getElementById('btnLabel');
+        if (btnText) btnText.innerText = data.btnLabel;
+      }
       
-      // Atualiza o Título da Aba e Meta Description
+      // 4. Atualiza o SEO (Título e Descrição)
       document.title = data.title;
-      document.querySelector('meta[name="description"]').setAttribute('content', data.description);
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', data.description);
     }
   });
 </script>

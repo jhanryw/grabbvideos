@@ -38,6 +38,10 @@ const BASE_ARGS = [
 /* ── Middleware ─────────────────────────────────────────────────────────── */
 app.use(cors());
 app.use(express.json());
+
+// ADICIONE ESTA LINHA AQUI:
+app.get('/pages.js', (_req, res) => { res.sendFile(path.join(__dirname, 'src', 'pages.js')); });
+
 app.use(express.static(path.join(__dirname, 'public'), {
   maxAge: '7d',
   etag:   true,

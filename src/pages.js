@@ -476,4 +476,7 @@ const PAGES = {
   },
 };
 
-module.exports = PAGES;
+// Permite que o arquivo seja lido tanto pelo Node.js (servidor) quanto pelo navegador
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = PAGES;
+}

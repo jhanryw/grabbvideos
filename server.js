@@ -39,7 +39,7 @@ const BASE_ARGS = [
 app.use(cors());
 app.use(express.json());
 
-// ADICIONE ESTA LINHA AQUI:
+// Serve o pages.js para o navegador
 app.get('/pages.js', (_req, res) => { res.sendFile(path.join(__dirname, 'src', 'pages.js')); });
 
 app.use(express.static(path.join(__dirname, 'public'), {
@@ -47,27 +47,33 @@ app.use(express.static(path.join(__dirname, 'public'), {
   etag:   true,
 }));
 
+/* ── Redirecionamento Inteligente (Amigo do Google) ────────────────────── */
+app.get('/', (req, res) => {
+  const ua = req.headers['user-agent'] || '';
+  // Detecta se quem está acessando é o robô do Google ou de outras redes
+  const isBot = /googlebot|bingbot|yandex|baiduspider|twitterbot|facebookexternalhit/i.test(ua);
+
+  // SE FOR ROBÔ: Entrega o index.html direto sem dar redirecionamento 301/302.
+  // Isso remove o erro de "Página com redirecionamento" no Search Console.
+  if (isBot) {
+    return res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  }
+
+  // SE FOR HUMANO: Mantém o redirecionamento automático por idioma.
+  const acceptLang = req.headers['accept-language'] || '';
+  let lang = 'en';
+  if (acceptLang.includes('pt')) lang = 'pt';
+  else if (acceptLang.includes('es')) lang = 'es';
+  
+  // Usamos 302 (temporário) para que o Google não ache que a Home sumiu para sempre
+  res.redirect(302, `/${lang}`);
+});
+
 /* ── Hosts Permitidos ───────────────────────────────────────────────────── */
 const ALLOWED_HOSTS = [
   'instagram.com', 'www.instagram.com',
   'tiktok.com', 'www.tiktok.com', 'vm.tiktok.com', 'vt.tiktok.com', 'm.tiktok.com',
 ];
-
-function isAllowedUrl(rawUrl) {
-  try {
-    const { hostname } = new URL(rawUrl);
-    return ALLOWED_HOSTS.includes(hostname.toLowerCase());
-  } catch { return false; }
-}
-
-function detectPlatform(rawUrl) {
-  try {
-    const { hostname } = new URL(rawUrl);
-    if (hostname.includes('instagram')) return 'instagram';
-    if (hostname.includes('tiktok'))    return 'tiktok';
-  } catch {}
-  return null;
-}
 
 /* ── Helper yt-dlp ──────────────────────────────────────────────────────── */
 function ytDlpJson(url) {

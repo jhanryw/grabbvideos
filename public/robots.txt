@@ -2,4 +2,10 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+# Indica as rotas principais para o robô não se perder no redirecionamento
+Allow: /pt
+Allow: /es
+Allow: /en
+Allow: /blog
+
 Sitemap: https://grabbvideos.com/sitemap.xml
